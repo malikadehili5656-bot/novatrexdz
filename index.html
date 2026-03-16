@@ -4,27 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NOVATREX | Travaux Publics, Bâtiments TCE & Hydrauliques</title>
-  <meta
-    name="description"
-    content="NOVATREX - Entreprise de Travaux Publics, Bâtiments TCE & Hydrauliques en Algérie."
-  />
+  <meta name="description" content="NOVATREX - Entreprise de Travaux Publics, Bâtiments TCE & Hydrauliques en Algérie." />
 
   <style>
     :root{
       --orange:#f2a11c;
-      --orange-dark:#dc8f10;
-      --orange-soft:#f9e4b8;
-      --black:#111111;
-      --text:#232323;
+      --orange-dark:#d98b0f;
+      --yellow:#f4c247;
+      --black:#141414;
+      --text:#222222;
       --muted:#6b6b6b;
-      --bg:#f7f3ed;
+      --bg:#f5f2ec;
       --white:#ffffff;
-      --soft:#fcfaf7;
-      --line:#e8ddd1;
-      --radius:22px;
-      --radius-lg:30px;
-      --shadow:0 16px 38px rgba(0,0,0,.06);
-      --shadow-soft:0 8px 18px rgba(0,0,0,.04);
+      --soft:#faf7f2;
+      --line:#e7ddd0;
+      --radius:20px;
+      --shadow:0 12px 28px rgba(0,0,0,0.06);
       --max:1200px;
     }
 
@@ -39,20 +34,17 @@
     }
 
     body{
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(242,161,28,.06), transparent 22%),
-        radial-gradient(circle at top right, rgba(242,161,28,.04), transparent 18%),
-        var(--bg);
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--bg);
       color:var(--text);
-      line-height:1.6;
+      line-height:1.65;
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
     }
 
     img{
-      display:block;
       max-width:100%;
+      display:block;
     }
 
     a{
@@ -65,27 +57,31 @@
     }
 
     .container{
-      width:min(calc(100% - 32px), var(--max));
-      margin:0 auto;
+      width:min(var(--max), calc(100% - 32px));
+      margin:auto;
+    }
+
+    .hidden{
+      display:none !important;
     }
 
     /* HEADER */
-    .header{
+    header{
       position:sticky;
       top:0;
-      z-index:1000;
-      background:rgba(247,243,237,.9);
-      backdrop-filter:blur(14px);
-      border-bottom:1px solid rgba(0,0,0,.05);
+      z-index:999;
+      background:rgba(255,255,255,0.97);
+      backdrop-filter:blur(10px);
+      border-bottom:4px solid var(--orange);
+      box-shadow:0 6px 18px rgba(0,0,0,0.04);
     }
 
-    .header-inner{
-      min-height:88px;
-      display:flex;
+    .navbar{
+      display:grid;
+      grid-template-columns:auto 1fr auto auto;
       align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      padding:14px 0;
+      gap:18px;
+      padding:12px 0;
       position:relative;
     }
 
@@ -94,124 +90,113 @@
       align-items:center;
       gap:14px;
       min-width:0;
-      flex:1;
     }
 
-    .brand-logo-wrap{
-      width:84px;
-      height:84px;
-      flex-shrink:0;
-      background:rgba(255,255,255,.92);
-      border:1px solid rgba(0,0,0,.04);
-      border-radius:20px;
-      box-shadow:var(--shadow-soft);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:8px;
-    }
-
-    .brand-logo{
-      width:100%;
-      height:100%;
+    .logo{
+      height:88px;
+      width:auto;
       object-fit:contain;
-      object-position:center;
+      display:block;
+      flex-shrink:0;
     }
 
-    .brand-text{
+    .brand-text h1{
+      font-size:1.7rem;
+      line-height:1.05;
+      color:var(--black);
+      margin-bottom:4px;
+    }
+
+    .brand-text p{
+      color:var(--muted);
+      font-size:0.92rem;
+      max-width:320px;
+    }
+
+    .menu-wrap{
+      width:100%;
+      display:flex;
+      justify-content:center;
       min-width:0;
     }
 
-    .brand-title{
-      font-size:1.5rem;
-      font-weight:900;
-      letter-spacing:.3px;
-      line-height:1.05;
-      color:var(--black);
-    }
-
-    .brand-subtitle{
-      margin-top:5px;
-      color:var(--muted);
-      font-size:.97rem;
-    }
-
-    .desktop-nav{
+    .menu{
       display:flex;
       align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:nowrap;
     }
 
-    .desktop-nav a{
-      padding:12px 18px;
+    .menu a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:42px;
+      padding:10px 14px;
       border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.72);
-      font-weight:800;
-      transition:.25s ease;
-      white-space:nowrap;
-    }
-
-    .desktop-nav a:hover{
       background:var(--white);
-      transform:translateY(-1px);
-      box-shadow:var(--shadow-soft);
+      border:1px solid var(--line);
+      color:var(--black);
+      font-size:0.92rem;
+      font-weight:700;
+      white-space:nowrap;
+      transition:.2s ease;
     }
 
-    .lang-switch{
-      display:flex;
-      align-items:center;
-      gap:8px;
-      margin-left:4px;
-    }
-
-    .lang-btn{
-      border:none;
-      cursor:pointer;
-      min-width:56px;
-      padding:12px 15px;
-      border-radius:14px;
-      font-weight:900;
-      transition:.25s ease;
-    }
-
-    .lang-btn.active{
+    .menu a:hover{
       background:var(--orange);
-      color:#fff;
-      box-shadow:0 10px 22px rgba(242,161,28,.24);
+      border-color:var(--orange);
+      color:var(--white);
     }
 
-    .lang-btn.secondary{
+    .lang{
+      display:flex;
+      gap:8px;
+      justify-content:flex-end;
+      align-items:center;
+    }
+
+    .lang button{
+      border:none;
+      padding:10px 13px;
+      border-radius:10px;
+      cursor:pointer;
       background:var(--black);
-      color:#fff;
+      color:var(--white);
+      font-weight:700;
+      transition:.2s ease;
+      min-width:50px;
+    }
+
+    .lang button.active,
+    .lang button:hover{
+      background:var(--orange);
     }
 
     .menu-toggle{
       display:none;
-      width:50px;
-      height:50px;
       border:none;
-      border-radius:15px;
       background:var(--black);
-      color:#fff;
-      font-size:1.35rem;
+      color:var(--white);
+      width:46px;
+      height:46px;
+      border-radius:12px;
       cursor:pointer;
-      flex-shrink:0;
+      font-size:1.2rem;
+      align-items:center;
+      justify-content:center;
     }
 
     .mobile-panel{
       display:none;
-      position:absolute;
-      top:calc(100% + 10px);
-      left:0;
-      right:0;
-      background:rgba(255,255,255,.98);
+      grid-column:1 / -1;
+      background:var(--white);
       border:1px solid var(--line);
-      border-radius:24px;
+      border-radius:18px;
       box-shadow:var(--shadow);
-      padding:16px;
+      padding:14px;
+      margin-top:8px;
     }
 
     .mobile-panel.open{
@@ -225,670 +210,1069 @@
     }
 
     .mobile-nav a{
-      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       text-align:center;
-      border:1px solid var(--line);
-      border-radius:16px;
+      min-height:46px;
+      padding:10px 14px;
+      border-radius:14px;
       background:var(--soft);
-      font-weight:800;
+      border:1px solid var(--line);
+      font-weight:700;
+      font-size:0.95rem;
     }
 
     .mobile-lang{
       display:flex;
       justify-content:center;
       gap:8px;
-      margin-top:14px;
+      margin-top:12px;
+    }
+
+    .mobile-lang button{
+      border:none;
+      padding:10px 14px;
+      border-radius:10px;
+      cursor:pointer;
+      background:var(--black);
+      color:var(--white);
+      font-weight:700;
+      min-width:54px;
+    }
+
+    .mobile-lang button.active{
+      background:var(--orange);
     }
 
     /* HERO */
     .hero{
-      padding:44px 0 26px;
+      padding:42px 0 28px;
     }
 
     .hero-card{
+      background:linear-gradient(135deg, #111111, #252525);
+      color:var(--white);
+      border-radius:28px;
+      padding:52px 44px;
       position:relative;
       overflow:hidden;
-      border:1px solid var(--line);
-      border-radius:var(--radius-lg);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(252,250,247,1) 100%);
       box-shadow:var(--shadow);
-      padding:58px 36px 52px;
-      text-align:center;
+      border:1px solid rgba(242,161,28,0.18);
     }
 
     .hero-card::before{
       content:"";
       position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 15% 18%, rgba(242,161,28,.08), transparent 18%),
-        radial-gradient(circle at 85% 20%, rgba(242,161,28,.05), transparent 16%);
-      pointer-events:none;
+      top:-70px;
+      right:-70px;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(242,161,28,0.18), transparent 65%);
     }
 
     .hero-card::after{
       content:"";
       position:absolute;
-      left:0;
-      right:0;
-      bottom:0;
-      height:6px;
-      background:linear-gradient(90deg, var(--orange), #f7c04d);
+      bottom:-80px;
+      left:-80px;
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(244,194,71,0.12), transparent 70%);
     }
 
-    .hero-logo-wrap{
-      width:132px;
-      height:132px;
-      margin:0 auto 18px;
-      background:#fff;
-      border:1px solid rgba(0,0,0,.04);
-      border-radius:26px;
-      box-shadow:0 12px 28px rgba(0,0,0,.05);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px;
+    .eyebrow{
+      display:inline-block;
+      background:rgba(242,161,28,0.12);
+      border:1px solid rgba(242,161,28,0.25);
+      color:var(--yellow);
+      padding:8px 14px;
+      border-radius:999px;
+      font-weight:700;
+      margin-bottom:18px;
+      position:relative;
+      z-index:1;
+      font-size:0.95rem;
+    }
+
+    .hero h2{
+      font-size:clamp(2rem, 4vw, 4rem);
+      line-height:1.08;
+      margin-bottom:16px;
+      max-width:900px;
       position:relative;
       z-index:1;
     }
 
-    .hero-logo{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      object-position:center;
+    .hero .accent{
+      color:var(--orange);
     }
 
-    .hero h1{
+    .hero p{
+      max-width:820px;
+      color:rgba(255,255,255,0.9);
+      font-size:1.04rem;
       position:relative;
       z-index:1;
-      font-size:clamp(2.3rem, 5vw, 4.2rem);
-      line-height:1.02;
-      font-weight:900;
-      color:var(--black);
-      letter-spacing:.4px;
-    }
-
-    .hero-subtitle{
-      position:relative;
-      z-index:1;
-      margin:16px auto 0;
-      max-width:860px;
-      color:var(--muted);
-      font-size:clamp(1rem, 1.45vw, 1.2rem);
     }
 
     .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:24px;
       position:relative;
       z-index:1;
-      margin-top:30px;
-      display:flex;
-      justify-content:center;
-      gap:14px;
-      flex-wrap:wrap;
     }
 
     .btn{
-      min-height:54px;
-      padding:0 24px;
-      border-radius:999px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      font-weight:900;
-      transition:.25s ease;
-      border:1px solid transparent;
+      padding:14px 20px;
+      border-radius:14px;
+      font-weight:700;
+      transition:.2s ease;
+      text-align:center;
     }
 
     .btn-primary{
       background:var(--orange);
-      color:#fff;
-      box-shadow:0 12px 22px rgba(242,161,28,.22);
+      color:var(--white);
+      border:1px solid var(--orange);
     }
 
     .btn-primary:hover{
       background:var(--orange-dark);
-      transform:translateY(-1px);
+      border-color:var(--orange-dark);
     }
 
     .btn-secondary{
-      background:#fff;
-      color:var(--black);
-      border-color:var(--line);
+      background:transparent;
+      color:var(--white);
+      border:1px solid rgba(255,255,255,0.22);
     }
 
     .btn-secondary:hover{
-      background:#fffdfa;
-      transform:translateY(-1px);
+      border-color:rgba(242,161,28,0.8);
+      background:rgba(242,161,28,0.08);
     }
 
-    /* GENERAL SECTIONS */
-    section{
-      padding:28px 0;
+    /* SECTION */
+    .section{
+      padding:68px 0;
     }
 
-    .section-head{
+    .section-title{
       text-align:center;
-      margin-bottom:28px;
+      margin-bottom:38px;
     }
 
-    .section-head h2{
-      font-size:clamp(1.75rem, 3vw, 2.6rem);
-      line-height:1.08;
-      font-weight:900;
+    .section-title h3{
+      font-size:clamp(1.8rem, 3vw, 2.8rem);
       color:var(--black);
+      margin-bottom:10px;
     }
 
-    .section-head p{
-      max-width:780px;
-      margin:10px auto 0;
+    .section-title p{
       color:var(--muted);
+      max-width:820px;
+      margin:auto;
     }
 
+    .line{
+      width:78px;
+      height:5px;
+      border-radius:999px;
+      margin:0 auto 16px;
+      background:linear-gradient(90deg, var(--orange), var(--yellow));
+    }
+
+    /* SERVICES */
     .grid{
       display:grid;
-      gap:22px;
-    }
-
-    .services-grid{
-      grid-template-columns:repeat(3, minmax(0,1fr));
-    }
-
-    .why-grid{
-      grid-template-columns:repeat(3, minmax(0,1fr));
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
     }
 
     .card{
-      background:rgba(255,255,255,.94);
-      border:1px solid var(--line);
-      border-radius:26px;
-      box-shadow:var(--shadow);
+      background:var(--white);
       padding:28px 24px;
-      height:100%;
-      transition:.25s ease;
-    }
-
-    .card:hover{
-      transform:translateY(-4px);
-    }
-
-    .service-icon{
-      width:62px;
-      height:62px;
-      border-radius:18px;
-      background:linear-gradient(180deg, rgba(242,161,28,.14), rgba(242,161,28,.08));
-      color:var(--orange-dark);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:900;
-      font-size:1.05rem;
-      margin-bottom:16px;
-    }
-
-    .card h3{
-      font-size:1.2rem;
-      line-height:1.2;
-      margin-bottom:10px;
-      font-weight:900;
-      color:var(--black);
-    }
-
-    .card p{
-      color:var(--muted);
-      font-size:1rem;
-    }
-
-    .why-card{
-      text-align:center;
-      padding-top:30px;
-      padding-bottom:30px;
-    }
-
-    .why-number{
-      width:66px;
-      height:66px;
-      margin:0 auto 18px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:linear-gradient(180deg, #f5be43 0%, #e4a019 100%);
-      color:#fff;
-      font-weight:900;
-      font-size:1.5rem;
-      box-shadow:0 12px 24px rgba(242,161,28,.22);
-    }
-
-    /* CONTACT */
-    .contact-wrap{
-      border-radius:30px;
-      overflow:hidden;
-      background:linear-gradient(180deg, #141414 0%, #1e1e1e 100%);
+      border-radius:var(--radius);
       box-shadow:var(--shadow);
-      padding:42px 30px;
-      position:relative;
+      border:1px solid var(--line);
+      height:100%;
     }
 
-    .contact-wrap::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 85% 20%, rgba(242,161,28,.12), transparent 18%),
-        radial-gradient(circle at 15% 85%, rgba(242,161,28,.07), transparent 20%);
-      pointer-events:none;
+    .card.black{
+      border-top:6px solid var(--black);
     }
 
-    .contact-grid{
-      position:relative;
-      z-index:1;
-      display:grid;
-      grid-template-columns:1.15fr .95fr;
-      gap:24px;
-      align-items:center;
+    .card.orange{
+      border-top:6px solid var(--orange);
     }
 
-    .contact-wrap h2{
-      color:#fff;
-      font-size:clamp(1.85rem, 3vw, 2.7rem);
-      line-height:1.08;
-      margin-bottom:12px;
-      font-weight:900;
+    .card.yellow{
+      border-top:6px solid var(--yellow);
     }
 
-    .contact-wrap p{
-      color:rgba(255,255,255,.8);
-      max-width:650px;
+    .card h4{
+      font-size:1.16rem;
+      margin-bottom:16px;
+      color:var(--black);
+      line-height:1.35;
     }
 
-    .contact-links{
+    .card ul{
+      list-style:none;
       display:grid;
       gap:12px;
     }
 
-    .contact-link{
-      display:block;
-      padding:16px 18px;
-      border-radius:18px;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.12);
-      color:#fff;
-      font-weight:800;
-      transition:.25s ease;
-      word-break:break-word;
+    .card li{
+      position:relative;
+      padding-left:20px;
+      font-size:0.98rem;
     }
 
-    .contact-link:hover{
-      background:rgba(255,255,255,.13);
-      transform:translateY(-1px);
+    .card li::before{
+      content:"•";
+      position:absolute;
+      left:0;
+      top:0;
+      color:var(--orange);
+      font-size:1.3rem;
+      line-height:1;
+    }
+
+    /* WHY */
+    .why{
+      background:var(--soft);
+    }
+
+    .whygrid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+    }
+
+    .whybox{
+      background:var(--white);
+      padding:24px 20px;
+      border-radius:var(--radius);
+      text-align:center;
+      box-shadow:0 8px 20px rgba(0,0,0,0.05);
+      border:1px solid var(--line);
+      height:100%;
+    }
+
+    .whyicon{
+      width:52px;
+      height:52px;
+      margin:0 auto 12px;
+      border-radius:50%;
+      background:linear-gradient(135deg, var(--orange), var(--yellow));
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      font-size:1.1rem;
+    }
+
+    .whybox h4{
+      margin-bottom:8px;
+      color:var(--black);
+      font-size:1.02rem;
+    }
+
+    .whybox p{
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    /* CONTACT */
+    .contact{
+      background:var(--white);
+      border-radius:24px;
+      padding:36px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+      display:grid;
+      grid-template-columns:1.05fr 0.95fr;
+      gap:30px;
+      align-items:start;
+    }
+
+    .contact h3{
+      font-size:2rem;
+      margin-bottom:12px;
+      color:var(--black);
+      line-height:1.15;
+    }
+
+    .contact p{
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+
+    .contact-list{
+      list-style:none;
+      display:grid;
+      gap:14px;
+    }
+
+    .contact-list li{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px 16px;
+      overflow-wrap:anywhere;
     }
 
     /* FOOTER */
-    .footer{
-      padding:28px 0 40px;
+    footer{
+      margin-top:70px;
+      padding:0 0 28px;
     }
 
-    .footer-box{
-      background:#fff;
-      border:1px solid var(--line);
+    .footer-card{
+      background:var(--black);
+      color:var(--white);
       border-radius:24px;
-      padding:22px;
+      padding:30px 28px;
+      border-top:4px solid var(--orange);
+      box-shadow:var(--shadow);
+    }
+
+    .footer-card h4{
+      color:var(--yellow);
+      margin-bottom:14px;
+      font-size:1.08rem;
+    }
+
+    .footer-card p{
+      color:rgba(255,255,255,0.88);
+      margin-bottom:6px;
+      font-size:0.96rem;
+      overflow-wrap:anywhere;
+    }
+
+    .footer-note{
       text-align:center;
+      margin-top:16px;
       color:var(--muted);
-      box-shadow:var(--shadow-soft);
+      font-size:0.92rem;
     }
 
-    .footer-box strong{
-      color:var(--black);
+    /* RTL */
+    .rtl{
+      direction:rtl;
+      text-align:right;
+      font-family:Tahoma, Arial, sans-serif;
     }
 
-    .footer-box a{
-      color:var(--black);
-      font-weight:700;
+    .rtl .brand{
+      flex-direction:row-reverse;
+    }
+
+    .rtl .card li{
+      padding-left:0;
+      padding-right:20px;
+    }
+
+    .rtl .card li::before{
+      left:auto;
+      right:0;
+    }
+
+    .rtl .contact-list li{
+      text-align:right;
     }
 
     /* RESPONSIVE */
-    @media (max-width: 1080px){
-      .desktop-nav{
+    @media (max-width:1180px){
+      .navbar{
+        grid-template-columns:auto 1fr auto auto;
+        gap:14px;
+      }
+
+      .logo{
+        height:76px;
+      }
+
+      .brand-text h1{
+        font-size:1.45rem;
+      }
+
+      .brand-text p{
+        font-size:0.88rem;
+        max-width:250px;
+      }
+
+      .menu{
+        gap:8px;
+      }
+
+      .menu a{
+        padding:9px 12px;
+        font-size:0.87rem;
+      }
+    }
+
+    @media (max-width:980px){
+      .navbar{
+        grid-template-columns:1fr auto auto;
+        gap:12px;
+      }
+
+      .menu-wrap{
+        display:none;
+      }
+
+      .lang{
         display:none;
       }
 
       .menu-toggle{
         display:inline-flex;
-        align-items:center;
-        justify-content:center;
       }
-    }
 
-    @media (max-width: 980px){
-      .services-grid,
-      .why-grid,
-      .contact-grid{
+      .grid{
         grid-template-columns:1fr;
       }
-    }
 
-    @media (max-width: 768px){
-      .container{
-        width:min(calc(100% - 22px), var(--max));
+      .whygrid{
+        grid-template-columns:repeat(2,1fr);
       }
 
-      .header-inner{
-        min-height:76px;
-        gap:12px;
+      .contact{
+        grid-template-columns:1fr;
+      }
+
+      .logo{
+        height:72px;
+      }
+
+      .brand-text h1{
+        font-size:1.35rem;
+      }
+
+      .brand-text p{
+        font-size:0.86rem;
+        max-width:260px;
+      }
+
+      .hero-card{
+        padding:42px 30px;
+      }
+
+      .section{
+        padding:56px 0;
+      }
+    }
+
+    @media (max-width:768px){
+      .container{
+        width:min(var(--max), calc(100% - 22px));
+      }
+
+      .navbar{
+        padding:10px 0;
       }
 
       .brand{
         gap:10px;
+        min-width:0;
       }
 
-      .brand-logo-wrap{
-        width:58px;
+      .logo{
         height:58px;
-        border-radius:14px;
-        padding:5px;
       }
 
-      .brand-title{
-        font-size:1.1rem;
+      .brand-text h1{
+        font-size:1.15rem;
+        margin-bottom:2px;
       }
 
-      .brand-subtitle{
-        font-size:.82rem;
+      .brand-text p{
+        font-size:0.78rem;
+        line-height:1.35;
+        max-width:180px;
       }
 
       .hero{
-        padding-top:26px;
+        padding:26px 0 18px;
       }
 
       .hero-card{
-        padding:34px 18px 30px;
-        border-radius:24px;
+        padding:30px 18px;
+        border-radius:22px;
       }
 
-      .hero-logo-wrap{
-        width:88px;
-        height:88px;
-        padding:8px;
-        border-radius:20px;
+      .eyebrow{
+        font-size:0.82rem;
+        padding:7px 12px;
         margin-bottom:14px;
       }
 
-      .hero-actions{
-        gap:10px;
+      .hero h2{
+        font-size:1.9rem;
+        line-height:1.12;
+        margin-bottom:12px;
       }
 
-      .btn{
+      .hero p{
+        font-size:0.97rem;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+        align-items:stretch;
+      }
+
+      .hero-actions .btn{
         width:100%;
       }
 
-      section{
-        padding:20px 0;
+      .section{
+        padding:44px 0;
+      }
+
+      .section-title{
+        margin-bottom:28px;
+      }
+
+      .section-title h3{
+        font-size:1.7rem;
       }
 
       .card{
         padding:22px 18px;
-        border-radius:22px;
       }
 
-      .why-number{
-        width:56px;
-        height:56px;
-        font-size:1.25rem;
+      .card h4{
+        font-size:1.06rem;
       }
 
-      .contact-wrap{
-        padding:28px 18px;
-        border-radius:24px;
+      .card li{
+        font-size:0.94rem;
       }
 
-      .footer-box{
-        padding:18px 14px;
+      .whygrid{
+        grid-template-columns:1fr;
+      }
+
+      .whybox{
+        padding:22px 16px;
+      }
+
+      .contact{
+        padding:22px 16px;
+        border-radius:20px;
+        gap:20px;
+      }
+
+      .contact h3{
+        font-size:1.6rem;
+      }
+
+      .contact-list li{
+        padding:13px 14px;
+        font-size:0.95rem;
+      }
+
+      .footer-card{
+        padding:22px 16px;
+        border-radius:20px;
+      }
+
+      .footer-card p{
+        font-size:0.92rem;
+      }
+
+      .footer-note{
+        font-size:0.85rem;
+        margin-top:12px;
+      }
+
+      .mobile-nav a{
+        font-size:0.92rem;
       }
     }
 
-    @media (max-width: 460px){
-      .brand-subtitle{
-        display:none;
+    @media (max-width:480px){
+      .navbar{
+        grid-template-columns:1fr auto auto;
       }
 
-      .hero h1{
-        font-size:2rem;
+      .brand{
+        gap:8px;
       }
 
-      .section-head h2{
-        font-size:1.55rem;
+      .logo{
+        height:50px;
+      }
+
+      .brand-text h1{
+        font-size:1rem;
+      }
+
+      .brand-text p{
+        font-size:0.72rem;
+        max-width:145px;
+      }
+
+      .menu-toggle{
+        width:42px;
+        height:42px;
+        font-size:1.05rem;
+      }
+
+      .hero-card{
+        padding:26px 16px;
+      }
+
+      .hero h2{
+        font-size:1.65rem;
+      }
+
+      .hero p{
+        font-size:0.93rem;
+      }
+
+      .btn{
+        padding:13px 16px;
+        font-size:0.95rem;
+      }
+
+      .section-title h3{
+        font-size:1.5rem;
+      }
+
+      .line{
+        width:62px;
+        height:4px;
       }
     }
   </style>
 </head>
 <body>
 
-  <header class="header">
-    <div class="container header-inner">
-      <a href="#accueil" class="brand" aria-label="NOVATREX accueil">
-        <div class="brand-logo-wrap">
-          <img
-            src="logo-novatrex-transparent.png"
-            alt="Logo NOVATREX"
-            class="brand-logo"
-          />
-        </div>
+  <header>
+    <div class="container navbar">
 
+      <div class="brand">
+        <img src="./logo-novatrex-transparent.png" alt="Logo Novatrex" class="logo">
         <div class="brand-text">
-          <div class="brand-title">NOVATREX</div>
-          <div class="brand-subtitle">Travaux Publics, Bâtiments TCE & Hydrauliques</div>
+          <h1>NOVATREX</h1>
+          <p id="subtitle-fr">Entreprise de Travaux Publics, Bâtiments TCE & Hydrauliques</p>
+          <p id="subtitle-ar" class="hidden">مؤسسة الأشغال العمومية والبناء بكل التخصصات والهيدروليك</p>
         </div>
-      </a>
+      </div>
 
-      <nav class="desktop-nav" aria-label="Navigation principale">
-        <a href="#accueil">Accueil</a>
-        <a href="#services">Services</a>
-        <a href="#pourquoi">Pourquoi nous choisir</a>
-        <a href="#contact">Contact</a>
+      <div class="menu-wrap">
+        <nav class="menu" id="menu-fr">
+          <a href="#home-fr">Accueil</a>
+          <a href="#services-fr">Services</a>
+          <a href="#why-fr">Pourquoi nous choisir</a>
+          <a href="#contact-fr">Contact</a>
+        </nav>
 
-        <div class="lang-switch">
-          <button class="lang-btn active" type="button">FR</button>
-          <button class="lang-btn secondary" type="button">AR</button>
-        </div>
-      </nav>
+        <nav class="menu hidden" id="menu-ar">
+          <a href="#home-ar">الرئيسية</a>
+          <a href="#services-ar">الخدمات</a>
+          <a href="#why-ar">لماذا نحن</a>
+          <a href="#contact-ar">اتصل بنا</a>
+        </nav>
+      </div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
-        ☰
-      </button>
+      <div class="lang">
+        <button class="active" id="btn-fr" onclick="setLanguage('fr')">FR</button>
+        <button id="btn-ar" onclick="setLanguage('ar')">AR</button>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">☰</button>
 
       <div class="mobile-panel" id="mobilePanel">
-        <nav class="mobile-nav" aria-label="Navigation mobile">
-          <a href="#accueil">Accueil</a>
-          <a href="#services">Services</a>
-          <a href="#pourquoi">Pourquoi nous choisir</a>
-          <a href="#contact">Contact</a>
+        <nav class="mobile-nav" id="mobile-menu-fr">
+          <a href="#home-fr">Accueil</a>
+          <a href="#services-fr">Services</a>
+          <a href="#why-fr">Pourquoi nous choisir</a>
+          <a href="#contact-fr">Contact</a>
+        </nav>
+
+        <nav class="mobile-nav hidden" id="mobile-menu-ar">
+          <a href="#home-ar">الرئيسية</a>
+          <a href="#services-ar">الخدمات</a>
+          <a href="#why-ar">لماذا نحن</a>
+          <a href="#contact-ar">اتصل بنا</a>
         </nav>
 
         <div class="mobile-lang">
-          <button class="lang-btn active" type="button">FR</button>
-          <button class="lang-btn secondary" type="button">AR</button>
+          <button class="active" id="mobile-btn-fr" onclick="setLanguage('fr')">FR</button>
+          <button id="mobile-btn-ar" onclick="setLanguage('ar')">AR</button>
         </div>
       </div>
+
     </div>
   </header>
 
-  <main>
-    <section class="hero" id="accueil">
+  <!-- FR -->
+  <main id="page-fr">
+    <section class="hero" id="home-fr">
       <div class="container">
         <div class="hero-card">
-          <div class="hero-logo-wrap">
-            <img
-              src="logo-novatrex-transparent.png"
-              alt="Logo NOVATREX"
-              class="hero-logo"
-            />
-          </div>
-
-          <h1>NOVATREX</h1>
-
-          <p class="hero-subtitle">
-            Entreprise de Travaux Publics, Bâtiments TCE & Hydrauliques.
-            Une exécution rigoureuse, une expertise solide et une organisation fiable
-            pour accompagner vos projets avec sérieux et professionnalisme.
+          <div class="eyebrow">Catalogue de services</div>
+          <h2>NOVATREX, votre partenaire en <span class="accent">bâtiment</span>, <span class="accent">travaux publics</span> et <span class="accent">hydraulique</span></h2>
+          <p>
+            Entreprise spécialisée dans les travaux publics, le bâtiment tous corps d’état,
+            les réseaux hydrauliques et les infrastructures techniques.
           </p>
-
           <div class="hero-actions">
-            <a href="#services" class="btn btn-primary">Découvrir nos services</a>
-            <a href="#contact" class="btn btn-secondary">Nous contacter</a>
+            <a href="mailto:dg@novatrex-dz.com" class="btn btn-primary">dg@novatrex-dz.com</a>
+            <a href="tel:+213550816101" class="btn btn-secondary">+213 550 81 61 01</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="services">
+    <section class="section" id="services-fr">
       <div class="container">
-        <div class="section-head">
-          <h2>Nos services</h2>
-          <p>
-            NOVATREX intervient avec méthode, exigence et professionnalisme
-            dans les domaines des travaux publics, des bâtiments TCE et de l’hydraulique.
-          </p>
+        <div class="section-title">
+          <h3>Nos services</h3>
+          <div class="line"></div>
+          <p>Une présentation claire et professionnelle de nos domaines d’intervention.</p>
         </div>
 
-        <div class="grid services-grid">
-          <article class="card">
-            <div class="service-icon">01</div>
-            <h3>Travaux Publics</h3>
-            <p>
-              Réalisation de projets d’infrastructure avec une approche structurée,
-              un suivi rigoureux et une attention constante à la qualité d’exécution.
-            </p>
-          </article>
+        <div class="grid">
+          <div class="card black">
+            <h4>Bâtiment & Génie Civil</h4>
+            <ul>
+              <li>Travaux de bâtiment en tous corps d’état</li>
+              <li>Réhabilitation des bâtiments</li>
+              <li>Étanchéité des bâtiments</li>
+              <li>Charpente métallique : fabrication, assemblage et pose</li>
+              <li>Démolition de bâtiments et installations industrielles adjacentes</li>
+            </ul>
+          </div>
 
-          <article class="card">
-            <div class="service-icon">02</div>
-            <h3>Bâtiments TCE</h3>
-            <p>
-              Prise en charge complète des projets tous corps d’état,
-              du gros œuvre jusqu’aux finitions avec coordination et maîtrise.
-            </p>
-          </article>
+          <div class="card orange">
+            <h4>Travaux Publics & Réseaux</h4>
+            <ul>
+              <li>Travaux publics et entretien routier</li>
+              <li>Travaux d’aménagement urbain et d’espaces verts</li>
+              <li>Installation de réseaux et centres électriques et téléphoniques</li>
+              <li>Travaux d’électricité</li>
+            </ul>
+          </div>
 
-          <article class="card">
-            <div class="service-icon">03</div>
-            <h3>Hydraulique</h3>
-            <p>
-              Réalisation d’ouvrages et de réseaux hydrauliques
-              avec précision technique et respect des exigences du chantier.
-            </p>
-          </article>
+          <div class="card yellow">
+            <h4>Hydraulique & Ouvrages Techniques</h4>
+            <ul>
+              <li>Équipement de réseaux d’irrigation</li>
+              <li>Travaux de forage et d’exploitation de puits</li>
+              <li>Études et réalisation liées au bâtiment, travaux publics et hydraulique</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="pourquoi">
+    <section class="section why" id="why-fr">
       <div class="container">
-        <div class="section-head">
-          <h2>Pourquoi nous choisir</h2>
-          <p>
-            Une entreprise fondée sur l’expérience, la fiabilité et l’engagement qualité.
-          </p>
+        <div class="section-title">
+          <h3>Pourquoi nous choisir</h3>
+          <div class="line"></div>
         </div>
 
-        <div class="grid why-grid">
-          <article class="card why-card">
-            <div class="why-number">1</div>
-            <h3>Organisation rigoureuse</h3>
-            <p>
-              Une planification claire et un pilotage structuré pour livrer les projets
-              dans les délais convenus.
-            </p>
-          </article>
+        <div class="whygrid">
+          <div class="whybox">
+            <div class="whyicon">1</div>
+            <h4>Respect des délais</h4>
+            <p>Une organisation rigoureuse pour livrer les projets dans les temps convenus.</p>
+          </div>
 
-          <article class="card why-card">
-            <div class="why-number">2</div>
-            <h3>Plus de 30 ans d’expérience</h3>
-            <p>
-              Un savoir-faire solide acquis à travers des décennies d’activité
-              dans le secteur du BTP.
-            </p>
-          </article>
+          <div class="whybox">
+            <div class="whyicon">2</div>
+            <h4>Plus de 30 ans d’expérience</h4>
+            <p>Un savoir-faire solide acquis à travers des décennies d’activité dans le secteur BTP.</p>
+          </div>
 
-          <article class="card why-card">
-            <div class="why-number">3</div>
-            <h3>Engagement qualité</h3>
-            <p>
-              Des standards élevés de sérieux, de fiabilité et de qualité
-              à chaque étape du projet.
-            </p>
-          </article>
+          <div class="whybox">
+            <div class="whyicon">3</div>
+            <h4>Qualité d’exécution</h4>
+            <p>Des prestations sérieuses, soignées et adaptées aux exigences de chaque chantier.</p>
+          </div>
+
+          <div class="whybox">
+            <div class="whyicon">4</div>
+            <h4>Fiabilité professionnelle</h4>
+            <p>Une approche claire, fiable et orientée résultat, de l’étude à la réalisation.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section class="section" id="contact-fr">
       <div class="container">
-        <div class="contact-wrap">
-          <div class="contact-grid">
-            <div>
-              <h2>Parlons de votre projet</h2>
-              <p>
-                Pour toute demande d’information, de collaboration ou de devis,
-                contactez NOVATREX directement. Nous vous répondrons dans les meilleurs délais.
-              </p>
-            </div>
+        <div class="contact">
+          <div>
+            <h3>Contact</h3>
+            <p>Pour toute demande de devis ou d’information, contactez-nous directement.</p>
 
-            <div class="contact-links">
-              <a class="contact-link" href="mailto:dg@novatrex-dz.com">
-                dg@novatrex-dz.com
-              </a>
-              <a class="contact-link" href="tel:+213550816101">
-                +213 550 81 61 01
-              </a>
+            <div class="hero-actions">
+              <a href="mailto:dg@novatrex-dz.com" class="btn btn-primary">Envoyer un email</a>
+              <a href="tel:+213550816101" class="btn btn-primary">Appeler</a>
             </div>
           </div>
+
+          <ul class="contact-list">
+            <li><strong>Email :</strong> dg@novatrex-dz.com</li>
+            <li><strong>Téléphone :</strong> +213 550 81 61 01</li>
+            <li><strong>Adresse :</strong> Lotis. CLAUDE LAGROTTE - Section 275 - RDC - Ain Beniane – Alger</li>
+          </ul>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-box">
-        <strong>NOVATREX</strong> — Entreprise de Travaux Publics, Bâtiments TCE & Hydrauliques<br>
-        Email : <a href="mailto:dg@novatrex-dz.com">dg@novatrex-dz.com</a> |
-        Téléphone : <a href="tel:+213550816101">+213 550 81 61 01</a>
+  <!-- AR -->
+  <main id="page-ar" class="rtl hidden">
+    <section class="hero" id="home-ar">
+      <div class="container">
+        <div class="hero-card">
+          <div class="eyebrow">دليل الخدمات</div>
+          <h2>نوفاتريكس شريككم في <span class="accent">البناء</span> و<span class="accent">الأشغال العمومية</span> و<span class="accent">الهيدروليك</span></h2>
+          <p>
+            مؤسسة متخصصة في الأشغال العمومية، البناء بكل التخصصات،
+            الشبكات الهيدروليكية والمنشآت التقنية.
+          </p>
+          <div class="hero-actions">
+            <a href="mailto:dg@novatrex-dz.com" class="btn btn-primary">dg@novatrex-dz.com</a>
+            <a href="tel:+213550816101" class="btn btn-secondary">+213 550 81 61 01</a>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <section class="section" id="services-ar">
+      <div class="container">
+        <div class="section-title">
+          <h3>خدماتنا</h3>
+          <div class="line"></div>
+          <p>عرض واضح واحترافي لمجالات تدخل المؤسسة.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card black">
+            <h4>البناء والهندسة المدنية</h4>
+            <ul>
+              <li>أشغال البناء بكل التخصصات</li>
+              <li>إعادة تأهيل المباني</li>
+              <li>عزل المباني</li>
+              <li>الهياكل المعدنية: تصنيع وتجميع وتركيب</li>
+              <li>هدم المباني والمنشآت الصناعية المجاورة</li>
+            </ul>
+          </div>
+
+          <div class="card orange">
+            <h4>الأشغال العمومية والشبكات</h4>
+            <ul>
+              <li>الأشغال العمومية وصيانة الطرق</li>
+              <li>أشغال التهيئة الحضرية والمساحات الخضراء</li>
+              <li>تركيب الشبكات والمراكز الكهربائية والهاتفية</li>
+              <li>أشغال الكهرباء</li>
+            </ul>
+          </div>
+
+          <div class="card yellow">
+            <h4>الهيدروليك والمنشآت التقنية</h4>
+            <ul>
+              <li>تجهيز شبكات السقي</li>
+              <li>أشغال الحفر واستغلال الآبار</li>
+              <li>الدراسات والإنجاز المتعلقة بالبناء والأشغال العمومية والهيدروليك</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why" id="why-ar">
+      <div class="container">
+        <div class="section-title">
+          <h3>لماذا نحن</h3>
+          <div class="line"></div>
+        </div>
+
+        <div class="whygrid">
+          <div class="whybox">
+            <div class="whyicon">1</div>
+            <h4>احترام الآجال</h4>
+            <p>تنظيم دقيق يضمن إنجاز المشاريع ضمن المواعيد المتفق عليها.</p>
+          </div>
+
+          <div class="whybox">
+            <div class="whyicon">2</div>
+            <h4>أكثر من 30 سنة خبرة</h4>
+            <p>خبرة ميدانية متراكمة في قطاع البناء والأشغال العمومية.</p>
+          </div>
+
+          <div class="whybox">
+            <div class="whyicon">3</div>
+            <h4>جودة في التنفيذ</h4>
+            <p>خدمات جدية ومنظمة ومتكيفة مع متطلبات كل مشروع.</p>
+          </div>
+
+          <div class="whybox">
+            <div class="whyicon">4</div>
+            <h4>موثوقية مهنية</h4>
+            <p>رؤية واضحة واحترافية من مرحلة الدراسة إلى غاية الإنجاز.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact-ar">
+      <div class="container">
+        <div class="contact">
+          <div>
+            <h3>اتصل بنا</h3>
+            <p>لأي طلب عرض سعر أو استفسار، تواصلوا معنا مباشرة.</p>
+
+            <div class="hero-actions">
+              <a href="mailto:dg@novatrex-dz.com" class="btn btn-primary">إرسال بريد إلكتروني</a>
+              <a href="tel:+213550816101" class="btn btn-primary">اتصال</a>
+            </div>
+          </div>
+
+          <ul class="contact-list">
+            <li><strong>البريد الإلكتروني :</strong> dg@novatrex-dz.com</li>
+            <li><strong>الهاتف :</strong> +213 550 81 61 01</li>
+            <li><strong>العنوان :</strong> Lotis. CLAUDE LAGROTTE - Section 275 - RDC - عين البنيان - الجزائر</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-card">
+        <div id="footer-fr">
+          <h4>Informations société</h4>
+          <p><strong>NOVATREX</strong></p>
+          <p>EURL au capital social de 11 000 000 DA</p>
+          <p>RC N° : 16/00 -1243630 -B26</p>
+          <p>NIF : 002616124363009</p>
+          <p>NIS : 0 026 1644 0031 60</p>
+          <p>Art. Impos : 16570597531</p>
+        </div>
+
+        <div id="footer-ar" class="hidden">
+          <h4>معلومات الشركة</h4>
+          <p><strong>NOVATREX</strong></p>
+          <p>شركة ذات مسؤولية محدودة برأسمال اجتماعي قدره 11 000 000 دج</p>
+          <p>السجل التجاري: 16/00 -1243630 -B26</p>
+          <p>NIF : 002616124363009</p>
+          <p>NIS : 0 026 1644 0031 60</p>
+          <p>Art. Impos : 16570597531</p>
+        </div>
+      </div>
+
+      <div class="footer-note">© 2026 NOVATREX - Tous droits réservés</div>
     </div>
   </footer>
 
   <script>
-    const menuToggle = document.getElementById("menuToggle");
-    const mobilePanel = document.getElementById("mobilePanel");
+    function setLanguage(lang){
+      const html = document.documentElement;
+      const pageFr = document.getElementById('page-fr');
+      const pageAr = document.getElementById('page-ar');
+      const menuFr = document.getElementById('menu-fr');
+      const menuAr = document.getElementById('menu-ar');
+      const mobileMenuFr = document.getElementById('mobile-menu-fr');
+      const mobileMenuAr = document.getElementById('mobile-menu-ar');
+      const footerFr = document.getElementById('footer-fr');
+      const footerAr = document.getElementById('footer-ar');
+      const subtitleFr = document.getElementById('subtitle-fr');
+      const subtitleAr = document.getElementById('subtitle-ar');
+      const btnFr = document.getElementById('btn-fr');
+      const btnAr = document.getElementById('btn-ar');
+      const mobileBtnFr = document.getElementById('mobile-btn-fr');
+      const mobileBtnAr = document.getElementById('mobile-btn-ar');
 
-    menuToggle.addEventListener("click", () => {
-      mobilePanel.classList.toggle("open");
+      if(lang === 'ar'){
+        html.lang = 'ar';
+        html.dir = 'rtl';
+
+        pageFr.classList.add('hidden');
+        pageAr.classList.remove('hidden');
+
+        menuFr.classList.add('hidden');
+        menuAr.classList.remove('hidden');
+
+        mobileMenuFr.classList.add('hidden');
+        mobileMenuAr.classList.remove('hidden');
+
+        footerFr.classList.add('hidden');
+        footerAr.classList.remove('hidden');
+
+        subtitleFr.classList.add('hidden');
+        subtitleAr.classList.remove('hidden');
+
+        btnFr.classList.remove('active');
+        btnAr.classList.add('active');
+        mobileBtnFr.classList.remove('active');
+        mobileBtnAr.classList.add('active');
+      } else {
+        html.lang = 'fr';
+        html.dir = 'ltr';
+
+        pageAr.classList.add('hidden');
+        pageFr.classList.remove('hidden');
+
+        menuAr.classList.add('hidden');
+        menuFr.classList.remove('hidden');
+
+        mobileMenuAr.classList.add('hidden');
+        mobileMenuFr.classList.remove('hidden');
+
+        footerAr.classList.add('hidden');
+        footerFr.classList.remove('hidden');
+
+        subtitleAr.classList.add('hidden');
+        subtitleFr.classList.remove('hidden');
+
+        btnAr.classList.remove('active');
+        btnFr.classList.add('active');
+        mobileBtnAr.classList.remove('active');
+        mobileBtnFr.classList.add('active');
+      }
+    }
+
+    const menuToggle = document.getElementById('menuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+
+    menuToggle.addEventListener('click', () => {
+      mobilePanel.classList.toggle('open');
     });
 
-    document.querySelectorAll(".mobile-nav a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobilePanel.classList.remove("open");
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobilePanel.classList.remove('open');
       });
     });
 
-    document.addEventListener("click", (event) => {
-      const isClickInsideMenu = mobilePanel.contains(event.target);
-      const isClickOnButton = menuToggle.contains(event.target);
-
-      if (!isClickInsideMenu && !isClickOnButton) {
-        mobilePanel.classList.remove("open");
-      }
-    });
-
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 1080) {
-        mobilePanel.classList.remove("open");
+    document.addEventListener('click', (e) => {
+      const insidePanel = mobilePanel.contains(e.target);
+      const insideButton = menuToggle.contains(e.target);
+      if(!insidePanel && !insideButton){
+        mobilePanel.classList.remove('open');
       }
     });
   </script>
-
 </body>
 </html>
