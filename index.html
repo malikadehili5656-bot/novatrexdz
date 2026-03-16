@@ -356,6 +356,7 @@
           <ul class="contact-list">
             <li>📍 Lotissement CLAUDE LAGROTTE, Section 275 - RDC, Ain Beniane, Alger</li>
             <li>📞 0550 81 61 01</li>
+            <li>🕒 Sam - Jeu : 08:00 - 17:00</li>
           </ul>
         </div>
       </div>
@@ -422,6 +423,7 @@
           <ul class="contact-list">
             <li>📍 Lotissement CLAUDE LAGROTTE, Section 275 - RDC, Ain Beniane, Alger</li>
             <li>📞 0550 81 61 01</li>
+            <li>🕒 السبت - الخميس : 08:00 - 17:00</li>
           </ul>
         </div>
       </div>
@@ -430,10 +432,33 @@
 
   <footer>
     <div class="container">
-      <div>© 2026 NOVATREX — Qualité et Rigueur en BTPH</div>
-      <div class="legal">
-        EURL au capital social de 100 000,00 DA · RC N° : 16/00 -1243630 -B26 · NIF : 002616124363009 · NIS : 00261644003160 · Art. Impos : 16570597531
+      <div class="legal" id="footer-fr-content">
+        <strong>Informations société</strong><br><br>
+        <strong>NOVATREX</strong><br>
+        EURL au capital social de 100 000,00 DA<br>
+        Adresse : Lotissement CLAUDE LAGROTTE - Section 275 - RDC - Ain Beniane - Alger<br>
+        RC N° : 16/00 -1243630 -B26<br>
+        NIF : 002616124363009<br>
+        NIS : 00261644003160<br>
+        Art. Impos : 16570597531<br>
+        Tél : <a href="tel:0550816101">0550816101</a><br>
+        Email : <a href="mailto:dg@novatrex-dz.com">dg@novatrex-dz.com</a>
       </div>
+
+      <div class="legal hidden" id="footer-ar-content">
+        <strong>معلومات الشركة</strong><br><br>
+        <strong>NOVATREX</strong><br>
+        شركة ذات مسؤولية محدودة برأسمال اجتماعي قدره 100 000,00 دج<br>
+        العنوان: Lotissement CLAUDE LAGROTTE - Section 275 - RDC - عين البنيان - الجزائر<br>
+        السجل التجاري: 16/00 -1243630 -B26<br>
+        الرقم الجبائي NIF : 002616124363009<br>
+        رقم الإحصاء NIS : 00261644003160<br>
+        المادة الخاضعة للضريبة: 16570597531<br>
+        الهاتف: <a href="tel:0550816101">0550816101</a><br>
+        البريد الإلكتروني: <a href="mailto:dg@novatrex-dz.com">dg@novatrex-dz.com</a>
+      </div>
+
+      <div style="margin-top: 16px;">© 2026 NOVATREX - Tous droits réservés</div>
     </div>
   </footer>
 
@@ -445,6 +470,8 @@
       const btnAr = document.getElementById('btn-ar');
       const subFr = document.getElementById('nav-subtitle-fr');
       const subAr = document.getElementById('nav-subtitle-ar');
+      const footerFr = document.getElementById('footer-fr-content');
+      const footerAr = document.getElementById('footer-ar-content');
       document.documentElement.lang = lang === 'ar' ? 'ar' : 'fr';
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       if (lang === 'ar') {
@@ -452,6 +479,8 @@
         pageAr.classList.remove('hidden');
         subFr.classList.add('hidden');
         subAr.classList.remove('hidden');
+        footerFr.classList.add('hidden');
+        footerAr.classList.remove('hidden');
         btnFr.classList.remove('active');
         btnAr.classList.add('active');
       } else {
@@ -459,6 +488,8 @@
         pageFr.classList.remove('hidden');
         subAr.classList.add('hidden');
         subFr.classList.remove('hidden');
+        footerAr.classList.add('hidden');
+        footerFr.classList.remove('hidden');
         btnAr.classList.remove('active');
         btnFr.classList.add('active');
       }
