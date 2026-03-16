@@ -3,262 +3,425 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOVATREX | BTPH</title>
+  <title>NOVATREX | Travaux Publics, Bâtiments TCE & Hydrauliques</title>
+  <meta name="description" content="NOVATREX - Entreprise de Travaux Publics, Bâtiments TCE & Hydrauliques en Algérie." />
   <style>
     :root {
-      --black: #141414;
-      --blue: #273c97;
-      --cyan: #18a8c8;
+      --bg: #f6f5f2;
+      --surface: #ffffff;
+      --surface-soft: #fbfaf7;
+      --text: #1c1a1b;
+      --muted: #6b6663;
+      --line: #e7e1d8;
+      --blue: #2b3f98;
+      --cyan: #22a8c9;
       --orange: #f2a11c;
-      --yellow: #f4c13d;
-      --white: #ffffff;
-      --light: #f4f4f4;
-      --text: #2f2f2f;
-      --muted: #666666;
-      --border: #e6e6e6;
+      --yellow: #f3c348;
+      --shadow: 0 14px 38px rgba(27, 24, 22, 0.08);
+      --radius: 22px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--light);
+      background: var(--bg);
       color: var(--text);
       line-height: 1.65;
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
-    .container { width: min(1180px, 92%); margin: 0 auto; }
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
 
     .topbar {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(20,20,20,0.97);
-      border-bottom: 3px solid var(--yellow);
-      box-shadow: 0 3px 14px rgba(0,0,0,0.15);
+      background: rgba(246,245,242,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
     }
+
     .nav {
-      min-height: 88px;
+      min-height: 92px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      padding: 10px 0;
+      padding: 14px 0;
       flex-wrap: wrap;
     }
+
     .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
+      flex: 1 1 560px;
       min-width: 0;
-      flex: 1 1 520px;
     }
-    .brand img {
-      height: 76px;
-      width: auto;
-      object-fit: contain;
+
+    .logo-wrap {
       background: transparent;
+      border-radius: 18px;
+      padding: 0;
       flex-shrink: 0;
     }
+
+    .brand img {
+      height: 92px;
+      width: auto;
+      object-fit: contain;
+    }
+
     .brand-text h1 {
-      color: var(--white);
-      font-size: 1.5rem;
-      line-height: 1.1;
-      margin-bottom: 4px;
-      letter-spacing: 0.5px;
+      font-size: 1.9rem;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: 0.2px;
     }
+
     .brand-text p {
-      color: rgba(255,255,255,0.82);
-      font-size: 0.94rem;
+      color: var(--muted);
+      font-size: 1rem;
     }
+
     .lang-switch {
       display: flex;
       gap: 10px;
       flex-shrink: 0;
     }
+
     .lang-btn {
-      border: 1px solid rgba(255,255,255,0.24);
-      background: transparent;
-      color: var(--white);
-      padding: 10px 16px;
-      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--text);
+      padding: 11px 17px;
+      border-radius: 12px;
       cursor: pointer;
       font-weight: 700;
       transition: 0.25s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
-    .lang-btn:hover, .lang-btn.active {
+
+    .lang-btn:hover,
+    .lang-btn.active {
       background: var(--orange);
       border-color: var(--orange);
-      color: var(--black);
+      color: #fff;
     }
 
     .hero {
-      position: relative;
-      color: var(--white);
-      padding: 110px 0 80px;
-      background:
-        linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)),
-        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      padding: 72px 0 46px;
     }
+
+    .hero-card {
+      background: linear-gradient(135deg, rgba(43,63,152,0.96), rgba(34,168,201,0.92));
+      color: #fff;
+      border-radius: 30px;
+      padding: 58px 56px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -60px;
+      width: 260px;
+      height: 260px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 50%;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      left: -70px;
+      bottom: -80px;
+      width: 220px;
+      height: 220px;
+      background: rgba(242,161,28,0.18);
+      border-radius: 50%;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
     .hero h2 {
       font-size: clamp(2rem, 4vw, 4rem);
-      line-height: 1.12;
-      margin-bottom: 18px;
-      max-width: 900px;
-    }
-    .hero h2 .accent { color: var(--yellow); }
-    .hero p {
-      max-width: 850px;
-      font-size: 1.12rem;
-      color: rgba(255,255,255,0.92);
-    }
-
-    .section { padding: 70px 0; }
-    .section-title {
-      text-align: center;
-      margin-bottom: 34px;
-    }
-    .section-title h3 {
-      color: var(--blue);
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      margin-bottom: 10px;
-    }
-    .section-title .line {
-      width: 70px;
-      height: 5px;
-      background: var(--yellow);
-      border-radius: 999px;
-      margin: 0 auto 16px;
-    }
-    .section-title p {
-      color: var(--muted);
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 24px;
-      align-items: start;
-    }
-    .service-card {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 28px 24px;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.07);
-      border: 1px solid var(--border);
-      height: 100%;
-    }
-    .service-card.blue { border-top: 6px solid var(--blue); }
-    .service-card.yellow { border-top: 6px solid var(--yellow); }
-    .service-card.cyan { border-top: 6px solid var(--cyan); }
-    .service-card h4 {
-      color: var(--blue);
-      font-size: 1.05rem;
+      line-height: 1.08;
       margin-bottom: 16px;
-      line-height: 1.35;
-    }
-    .service-card ul {
-      list-style: none;
-      display: grid;
-      gap: 14px;
-    }
-    .service-card li {
+      max-width: 820px;
       position: relative;
-      padding-left: 28px;
-      color: var(--text);
-      font-size: 0.98rem;
-    }
-    .service-card li::before {
-      content: '✔';
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--orange);
-      font-weight: 700;
+      z-index: 1;
     }
 
-    .contact-wrap {
-      background: var(--black);
-      color: var(--white);
-      border-radius: 26px;
-      padding: 42px;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-      align-items: center;
+    .hero p {
+      max-width: 820px;
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.93);
+      position: relative;
+      z-index: 1;
     }
-    .contact-wrap h3 {
-      color: var(--yellow);
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      margin-bottom: 14px;
-    }
-    .contact-wrap p {
-      color: rgba(255,255,255,0.88);
-      font-size: 1.04rem;
-      margin-bottom: 18px;
-    }
-    .cta-row {
+
+    .hero-actions {
       display: flex;
-      flex-wrap: wrap;
       gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+      position: relative;
+      z-index: 1;
     }
+
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       padding: 14px 20px;
-      border-radius: 12px;
+      border-radius: 14px;
       font-weight: 700;
       transition: 0.25s ease;
     }
+
     .btn-primary {
-      background: var(--yellow);
-      color: var(--black);
+      background: #fff;
+      color: var(--blue);
     }
-    .btn-primary:hover { background: #e1af20; }
+
+    .btn-primary:hover { transform: translateY(-1px); }
+
     .btn-outline {
-      border: 1px solid rgba(255,255,255,0.22);
-      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.32);
+      color: #fff;
+      background: rgba(255,255,255,0.08);
     }
-    .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.14);
+    }
+
+    .section {
+      padding: 74px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .section-title h3 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      max-width: 840px;
+      margin: 0 auto;
+      color: var(--muted);
+    }
+
+    .line {
+      width: 74px;
+      height: 5px;
+      border-radius: 999px;
+      margin: 0 auto 16px;
+      background: linear-gradient(90deg, var(--orange), var(--yellow));
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .catalog-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      box-shadow: var(--shadow);
+      height: 100%;
+    }
+
+    .catalog-card.blue { border-top: 6px solid var(--blue); }
+    .catalog-card.orange { border-top: 6px solid var(--orange); }
+    .catalog-card.cyan { border-top: 6px solid var(--cyan); }
+
+    .catalog-card h4 {
+      font-size: 1.22rem;
+      color: var(--blue);
+      margin-bottom: 16px;
+      line-height: 1.35;
+    }
+
+    .catalog-card ul {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .catalog-card li {
+      position: relative;
+      padding-left: 24px;
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+
+    .catalog-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--orange);
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .why-card {
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    .why-card .icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+
+    .why-card h4 {
+      color: var(--blue);
+      margin-bottom: 8px;
+      font-size: 1.02rem;
+    }
+
+    .why-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact-block {
+      background: linear-gradient(135deg, #ffffff, #fbfaf7);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .contact-block h3 {
+      color: var(--blue);
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      margin-bottom: 10px;
+    }
+
+    .contact-block p {
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 560px;
+    }
 
     .contact-list {
       list-style: none;
       display: grid;
       gap: 14px;
-      font-size: 1rem;
+      justify-self: end;
+      text-align: left;
     }
-    .contact-list li { color: rgba(255,255,255,0.92); }
+
+    .contact-list li {
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      min-width: 320px;
+    }
 
     footer {
-      padding: 34px 0 20px;
-      text-align: center;
+      margin-top: 74px;
+      padding: 0 0 28px;
+    }
+
+    .footer-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 28px 26px;
+    }
+
+    .footer-card h4 {
+      color: var(--blue);
+      font-size: 1.15rem;
+      margin-bottom: 14px;
+    }
+
+    .footer-card p {
       color: var(--muted);
+      margin-bottom: 6px;
       font-size: 0.96rem;
     }
-    .legal {
+
+    .footer-note {
+      text-align: center;
+      color: var(--muted);
       margin-top: 16px;
-      font-size: 0.9rem;
-      color: #7a7a7a;
-      line-height: 1.7;
+      font-size: 0.92rem;
     }
 
-    .rtl { direction: rtl; text-align: right; font-family: Tahoma, Arial, sans-serif; }
-    .rtl .nav { direction: rtl; }
+    .rtl {
+      direction: rtl;
+      text-align: right;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
     .rtl .brand { flex-direction: row-reverse; }
-    .rtl .section, .rtl .hero { text-align: right; }
+    .rtl .nav { direction: rtl; }
+    .rtl .hero, .rtl .section, .rtl footer { text-align: right; }
     .rtl .section-title { text-align: center; }
-    .rtl .service-card li { padding-left: 0; padding-right: 28px; }
-    .rtl .service-card li::before { left: auto; right: 0; }
+    .rtl .catalog-card li { padding-left: 0; padding-right: 24px; }
+    .rtl .catalog-card li::before { left: auto; right: 0; }
+    .rtl .contact-list { justify-self: start; text-align: right; }
+
     .hidden { display: none !important; }
 
-    @media (max-width: 1024px) {
-      .services-grid { grid-template-columns: 1fr; }
-      .contact-wrap { grid-template-columns: 1fr; }
+    @media (max-width: 1080px) {
+      .catalog-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .contact-block { grid-template-columns: 1fr; }
+      .contact-list { justify-self: stretch; }
+      .contact-list li { min-width: 0; }
     }
 
     @media (max-width: 768px) {
@@ -269,12 +432,14 @@
         flex: 1 1 100%;
       }
       .rtl .brand { flex-direction: column; }
-      .brand img { height: 68px; }
-      .brand-text h1 { font-size: 1.35rem; }
-      .brand-text p { font-size: 0.9rem; }
+      .brand img { height: 78px; }
+      .brand-text h1 { font-size: 1.55rem; }
+      .brand-text p { font-size: 0.94rem; }
       .lang-switch { width: 100%; justify-content: center; }
-      .hero { padding: 90px 0 60px; }
-      .contact-wrap { padding: 28px 22px; }
+      .hero-card { padding: 38px 24px; border-radius: 24px; }
+      .section { padding: 58px 0; }
+      .why-grid { grid-template-columns: 1fr; }
+      .contact-block { padding: 24px; }
     }
   </style>
 </head>
@@ -282,7 +447,9 @@
   <header class="topbar">
     <div class="container nav">
       <div class="brand">
-        <img src="logo-novatrex.png" alt="Logo Novatrex">
+        <div class="logo-wrap">
+          <img src="logo-novatrex.png" alt="Logo Novatrex">
+        </div>
         <div class="brand-text">
           <h1>NOVATREX</h1>
           <p id="nav-subtitle-fr">Entreprise de Travaux Publics, Bâtiments TCE & Hydrauliques</p>
@@ -290,8 +457,8 @@
         </div>
       </div>
       <div class="lang-switch">
-        <button class="lang-btn active" id="btn-fr" onclick="setLanguage('fr')">FRANÇAIS</button>
-        <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">العربية</button>
+        <button class="lang-btn active" id="btn-fr" onclick="setLanguage('fr')">FR</button>
+        <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">AR</button>
       </div>
     </div>
   </header>
@@ -299,64 +466,106 @@
   <main id="page-fr">
     <section class="hero">
       <div class="container">
-        <h2>Expertise <span class="accent">BTPH</span> au service de vos projets</h2>
-        <p>Études, réalisation et maintenance d'infrastructures durables partout en Algérie.</p>
+        <div class="hero-card">
+          <div class="eyebrow">Catalogue de services</div>
+          <h2>NOVATREX, votre partenaire pour les projets de bâtiment, travaux publics et hydraulique</h2>
+          <p>Nous accompagnons les projets publics, privés et industriels avec une offre complète en exécution, réhabilitation, réseaux, ouvrages techniques, hydraulique et structures métalliques.</p>
+          <div class="hero-actions">
+            <a href="mailto:dg@novatrex-dz.com" class="btn btn-primary">dg@novatrex-dz.com</a>
+            <a href="tel:+213550816101" class="btn btn-outline">+213 550 81 61 01</a>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
         <div class="section-title">
-          <h3>Nos Domaines d'Activité</h3>
+          <h3>Nos domaines d'activité</h3>
           <div class="line"></div>
+          <p>Une offre claire, structurée et professionnelle, pensée comme un véritable catalogue d’entreprise.</p>
         </div>
-        <div class="services-grid">
-          <article class="service-card blue">
-            <h4>🏢 Bâtiment & Génie Civil</h4>
+
+        <div class="catalog-grid">
+          <article class="catalog-card blue">
+            <h4>Bâtiment & Génie Civil</h4>
             <ul>
-              <li>Travaux de bâtiment en tous corps d'état (TCE)</li>
-              <li>Réhabilitation et rénovation des bâtiments</li>
-              <li>Étanchéité des bâtiments (toitures et terrasses)</li>
-              <li>Charpente métallique (fabrication, assemblage et pose)</li>
-              <li>Démolition de bâtiments et installations industrielles</li>
+              <li>Travaux de bâtiment en tous corps d'état</li>
+              <li>Réhabilitation des bâtiments</li>
+              <li>Étanchéité des bâtiments</li>
+              <li>Charpente métallique : fabrication, assemblage et pose</li>
+              <li>Démolition des bâtiments et installations industrielles adjacentes</li>
             </ul>
           </article>
-          <article class="service-card yellow">
-            <h4>🛣️ Travaux Publics & Voirie</h4>
+
+          <article class="catalog-card orange">
+            <h4>Travaux Publics & Réseaux</h4>
             <ul>
               <li>Travaux publics et entretien routier</li>
-              <li>Aménagement urbain et espaces verts</li>
-              <li>Réseaux et centres électriques et téléphoniques</li>
-              <li>Travaux d'électricité générale</li>
+              <li>Travaux d’aménagement urbain et d’espaces verts</li>
+              <li>Installation de réseaux et centres électriques et téléphoniques</li>
+              <li>Travaux d’électricité</li>
             </ul>
           </article>
-          <article class="service-card cyan">
-            <h4>💧 Hydraulique & Forage</h4>
+
+          <article class="catalog-card cyan">
+            <h4>Hydraulique & Ouvrages Techniques</h4>
             <ul>
-              <li>Équipement de réseaux d'irrigation</li>
-              <li>Travaux de forage et exploitation de puits</li>
-              <li>Études et réalisation de projets BTPH</li>
+              <li>Équipement de réseaux d’irrigation</li>
+              <li>Travaux de forage et d’exploitation de puits</li>
+              <li>Études et réalisation de toute activité liée au bâtiment, travaux publics et hydraulique</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" style="padding-top: 10px;">
+    <section class="section" style="padding-top: 0;">
       <div class="container">
-        <div class="contact-wrap">
+        <div class="section-title">
+          <h3>Pourquoi nous choisir</h3>
+          <div class="line"></div>
+        </div>
+        <div class="why-grid">
+          <article class="why-card">
+            <div class="icon">⏱️</div>
+            <h4>Respect des délais</h4>
+            <p>Une organisation rigoureuse pour livrer les projets dans les temps convenus.</p>
+          </article>
+          <article class="why-card">
+            <div class="icon">🏗️</div>
+            <h4>Plus de 30 ans d’expérience</h4>
+            <p>Un savoir-faire acquis à travers des années de pratique dans le bâtiment et les travaux publics.</p>
+          </article>
+          <article class="why-card">
+            <div class="icon">✅</div>
+            <h4>Qualité d’exécution</h4>
+            <p>Des prestations sérieuses, propres et adaptées aux exigences de chaque chantier.</p>
+          </article>
+          <article class="why-card">
+            <div class="icon">🤝</div>
+            <h4>Accompagnement professionnel</h4>
+            <p>Une approche claire, fiable et orientée résultat, de l’étude à la réalisation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0; padding-bottom: 26px;">
+      <div class="container">
+        <div class="contact-block">
           <div>
-            <h3>Besoin d'un devis ?</h3>
-            <p>Contactez notre direction pour une étude personnalisée de votre dossier.</p>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="mailto:dg@novatrex-dz.com">dg@novatrex-dz.com</a>
-              <a class="btn btn-outline" href="tel:0550816101">0550 81 61 01</a>
+            <h3>Besoin d’un devis ?</h3>
+            <p>Contactez notre direction pour une étude personnalisée de votre dossier et une réponse adaptée à votre projet.</p>
+            <div class="hero-actions">
+              <a href="mailto:dg@novatrex-dz.com" class="btn btn-primary">Envoyer un email</a>
+              <a href="tel:+213550816101" class="btn btn-outline" style="border-color: var(--line); color: var(--blue); background: #fff;">+213 550 81 61 01</a>
             </div>
           </div>
           <ul class="contact-list">
-            <li>📍 Lotissement CLAUDE LAGROTTE, Section 275 - RDC, Ain Beniane, Alger</li>
-            <li>📞 0550 81 61 01</li>
-            <li>🕒 Sam - Jeu : 08:00 - 17:00</li>
+            <li><strong>Adresse :</strong> Lotis. CLAUDE LAGROTTE - Section 275 - RDC - Ain Beniane - Alger</li>
+            <li><strong>Email :</strong> dg@novatrex-dz.com</li>
+            <li><strong>Tél :</strong> +213 550 81 61 01</li>
           </ul>
         </div>
       </div>
@@ -366,8 +575,15 @@
   <main id="page-ar" class="rtl hidden">
     <section class="hero">
       <div class="container">
-        <h2>خبرة <span class="accent">BTPH</span> في خدمة مشاريعكم</h2>
-        <p>دراسات وإنجاز وصيانة البنى التحتية المستدامة عبر كامل التراب الوطني.</p>
+        <div class="hero-card">
+          <div class="eyebrow">دليل الخدمات</div>
+          <h2>نوفاتريكس شريككم في مشاريع البناء والأشغال العمومية والهيدروليك</h2>
+          <p>نرافق المشاريع العمومية والخاصة والصناعية من خلال خدمات متكاملة في الإنجاز، إعادة التأهيل، الشبكات، المنشآت التقنية، الهيدروليك والهياكل المعدنية.</p>
+          <div class="hero-actions">
+            <a href="mailto:dg@novatrex-dz.com" class="btn btn-primary">dg@novatrex-dz.com</a>
+            <a href="tel:+213550816101" class="btn btn-outline">+213 550 81 61 01</a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -376,54 +592,89 @@
         <div class="section-title">
           <h3>مجالات نشاطنا</h3>
           <div class="line"></div>
+          <p>عرض واضح ومنظم واحترافي، مصمم كدليل خدمات حقيقي للمؤسسة.</p>
         </div>
-        <div class="services-grid">
-          <article class="service-card blue">
-            <h4>🏢 البناء والهندسة المدنية</h4>
+
+        <div class="catalog-grid">
+          <article class="catalog-card blue">
+            <h4>البناء والهندسة المدنية</h4>
             <ul>
               <li>أشغال البناء بكل التخصصات</li>
-              <li>إعادة تأهيل وترميم المباني</li>
-              <li>عزل المباني والأسطح والتراسات</li>
+              <li>إعادة تأهيل المباني</li>
+              <li>عزل المباني</li>
               <li>الهياكل المعدنية: تصنيع وتجميع وتركيب</li>
-              <li>هدم المباني والمنشآت الصناعية</li>
+              <li>هدم المباني والمنشآت الصناعية المجاورة</li>
             </ul>
           </article>
-          <article class="service-card yellow">
-            <h4>🛣️ الأشغال العمومية والطرقات</h4>
+
+          <article class="catalog-card orange">
+            <h4>الأشغال العمومية والشبكات</h4>
             <ul>
               <li>الأشغال العمومية وصيانة الطرق</li>
-              <li>التهيئة الحضرية والمساحات الخضراء</li>
-              <li>الشبكات والمراكز الكهربائية والهاتفية</li>
-              <li>أشغال الكهرباء العامة</li>
+              <li>أشغال التهيئة الحضرية والمساحات الخضراء</li>
+              <li>تركيب الشبكات والمراكز الكهربائية والهاتفية</li>
+              <li>أشغال الكهرباء</li>
             </ul>
           </article>
-          <article class="service-card cyan">
-            <h4>💧 الهيدروليك والحفر</h4>
+
+          <article class="catalog-card cyan">
+            <h4>الهيدروليك والمنشآت التقنية</h4>
             <ul>
               <li>تجهيز شبكات السقي</li>
               <li>أشغال الحفر واستغلال الآبار</li>
-              <li>الدراسات وإنجاز مشاريع BTPH</li>
+              <li>الدراسات والإنجاز في كل ما يتعلق بالبناء والأشغال العمومية والهيدروليك</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" style="padding-top: 10px;">
+    <section class="section" style="padding-top: 0;">
       <div class="container">
-        <div class="contact-wrap">
+        <div class="section-title">
+          <h3>لماذا نحن</h3>
+          <div class="line"></div>
+        </div>
+        <div class="why-grid">
+          <article class="why-card">
+            <div class="icon">⏱️</div>
+            <h4>احترام الآجال</h4>
+            <p>تنظيم دقيق يضمن إنجاز المشاريع ضمن المواعيد المتفق عليها.</p>
+          </article>
+          <article class="why-card">
+            <div class="icon">🏗️</div>
+            <h4>أكثر من 30 سنة خبرة</h4>
+            <p>خبرة ميدانية متراكمة في البناء والأشغال العمومية.</p>
+          </article>
+          <article class="why-card">
+            <div class="icon">✅</div>
+            <h4>جودة في التنفيذ</h4>
+            <p>خدمات جدية ومنظمة ومتكيفة مع متطلبات كل مشروع.</p>
+          </article>
+          <article class="why-card">
+            <div class="icon">🤝</div>
+            <h4>مرافقة مهنية</h4>
+            <p>رؤية واضحة وموثوقة من مرحلة الدراسة إلى غاية الإنجاز.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0; padding-bottom: 26px;">
+      <div class="container">
+        <div class="contact-block">
           <div>
             <h3>بحاجة إلى عرض سعر؟</h3>
-            <p>تواصلوا مع الإدارة من أجل دراسة مخصصة لمشروعكم.</p>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="mailto:dg@novatrex-dz.com">dg@novatrex-dz.com</a>
-              <a class="btn btn-outline" href="tel:0550816101">0550 81 61 01</a>
+            <p>تواصلوا مع الإدارة من أجل دراسة مخصصة وتقديم عرض مناسب لطبيعة مشروعكم.</p>
+            <div class="hero-actions">
+              <a href="mailto:dg@novatrex-dz.com" class="btn btn-primary">إرسال بريد إلكتروني</a>
+              <a href="tel:+213550816101" class="btn btn-outline" style="border-color: var(--line); color: var(--blue); background: #fff;">+213 550 81 61 01</a>
             </div>
           </div>
           <ul class="contact-list">
-            <li>📍 Lotissement CLAUDE LAGROTTE, Section 275 - RDC, Ain Beniane, Alger</li>
-            <li>📞 0550 81 61 01</li>
-            <li>🕒 السبت - الخميس : 08:00 - 17:00</li>
+            <li><strong>العنوان:</strong> Lotis. CLAUDE LAGROTTE - Section 275 - RDC - عين البنيان - الجزائر</li>
+            <li><strong>البريد الإلكتروني:</strong> dg@novatrex-dz.com</li>
+            <li><strong>الهاتف:</strong> +213 550 81 61 01</li>
           </ul>
         </div>
       </div>
@@ -432,33 +683,23 @@
 
   <footer>
     <div class="container">
-      <div class="legal" id="footer-fr-content">
-        <strong>Informations société</strong><br><br>
-        <strong>NOVATREX</strong><br>
-        EURL au capital social de 100 000,00 DA<br>
-        Adresse : Lotissement CLAUDE LAGROTTE - Section 275 - RDC - Ain Beniane - Alger<br>
-        RC N° : 16/00 -1243630 -B26<br>
-        NIF : 002616124363009<br>
-        NIS : 00261644003160<br>
-        Art. Impos : 16570597531<br>
-        Tél : <a href="tel:0550816101">0550816101</a><br>
-        Email : <a href="mailto:dg@novatrex-dz.com">dg@novatrex-dz.com</a>
+      <div class="footer-card">
+        <div id="footer-fr-content">
+          <h4>Informations société</h4>
+          <p><strong>NOVATREX</strong></p>
+          <p>Eurl au capital social de 100 000,00 DA</p>
+          <p>RC N° : 16/00 -1243630 -B26</p>
+          <p>NIF : 002616124363009 – NIS : 0 026 1644 0031 60 - Art. Impos : 16570597531</p>
+        </div>
+        <div id="footer-ar-content" class="hidden">
+          <h4>معلومات الشركة</h4>
+          <p><strong>NOVATREX</strong></p>
+          <p>شركة ذات مسؤولية محدودة برأسمال اجتماعي قدره 100 000,00 دج</p>
+          <p>السجل التجاري: 16/00 -1243630 -B26</p>
+          <p>NIF : 002616124363009 – NIS : 0 026 1644 0031 60 - Art. Impos : 16570597531</p>
+        </div>
       </div>
-
-      <div class="legal hidden" id="footer-ar-content">
-        <strong>معلومات الشركة</strong><br><br>
-        <strong>NOVATREX</strong><br>
-        شركة ذات مسؤولية محدودة برأسمال اجتماعي قدره 100 000,00 دج<br>
-        العنوان: Lotissement CLAUDE LAGROTTE - Section 275 - RDC - عين البنيان - الجزائر<br>
-        السجل التجاري: 16/00 -1243630 -B26<br>
-        الرقم الجبائي NIF : 002616124363009<br>
-        رقم الإحصاء NIS : 00261644003160<br>
-        المادة الخاضعة للضريبة: 16570597531<br>
-        الهاتف: <a href="tel:0550816101">0550816101</a><br>
-        البريد الإلكتروني: <a href="mailto:dg@novatrex-dz.com">dg@novatrex-dz.com</a>
-      </div>
-
-      <div style="margin-top: 16px;">© 2026 NOVATREX - Tous droits réservés</div>
+      <div class="footer-note">© 2026 NOVATREX - Tous droits réservés</div>
     </div>
   </footer>
 
@@ -474,6 +715,7 @@
       const footerAr = document.getElementById('footer-ar-content');
       document.documentElement.lang = lang === 'ar' ? 'ar' : 'fr';
       document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
       if (lang === 'ar') {
         pageFr.classList.add('hidden');
         pageAr.classList.remove('hidden');
