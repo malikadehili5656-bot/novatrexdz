@@ -1,228 +1,212 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVATREX — BTPH & Hydraulique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+Arabic:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --yellow: #ecb42c;
+            --blue: #223b8f;
+            --black: #1a1a1a;
+            --light: #fdfdfd;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', 'Noto Sans Arabic', sans-serif; background: var(--light); color: var(--black); line-height: 1.6; }
+
+        /* Barre de Langue supérieure */
+        .top-bar {
+            background: var(--black);
+            padding: 8px 0;
+            text-align: right;
+            border-bottom: 2px solid var(--yellow);
+        }
+        .container { width: min(92%, 1200px); margin: 0 auto; }
+        .lang-switcher button {
+            background: none; border: none; color: white; cursor: pointer;
+            font-weight: bold; font-size: 0.9rem; padding: 0 10px; transition: 0.3s;
+        }
+        .lang-switcher button:hover { color: var(--yellow); }
+        .lang-divider { color: var(--yellow); }
+
+        /* Header & Logo */
+        header { background: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo-area img { height: 70px; }
+
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; background-position: center;
+            color: white; padding: 80px 0; text-align: center;
+        }
+        .hero h1 { font-size: clamp(1.8rem, 5vw, 3.2rem); margin-bottom: 15px; text-transform: uppercase; }
+        .hero span { color: var(--yellow); }
+
+        /* Grille des Activités */
+        .section-title { text-align: center; margin: 60px 0 40px; }
+        .section-title h2 { font-size: 2.2rem; color: var(--blue); position: relative; display: inline-block; padding-bottom: 10px; }
+        .section-title h2::after { content: ""; display: block; width: 50%; height: 4px; background: var(--yellow); position: absolute; bottom: 0; left: 25%; }
+
+        .activity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
+        .card { 
+            background: white; border-radius: 12px; padding: 30px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 5px solid var(--blue);
+        }
+        .card h3 { color: var(--blue); margin-bottom: 20px; font-size: 1.3rem; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .activity-list { list-style: none; }
+        .activity-list li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; }
+        .activity-list li::before { content: "✔"; color: var(--yellow); font-weight: bold; }
+
+        /* Section Contact */
+        .contact-box { 
+            background: var(--black); color: white; border-radius: 15px; 
+            padding: 40px; margin: 60px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;
+        }
+        .contact-info h2 { color: var(--yellow); margin-bottom: 20px; }
+        .btn { 
+            display: inline-block; background: var(--yellow); color: var(--black); 
+            padding: 15px 30px; border-radius: 5px; font-weight: bold; text-decoration: none; transition: 0.3s;
+        }
+        .btn:hover { background: white; }
+
+        /* Gestion des langues (Affichage/Masquage) */
+        [lang="ar"] { display: none; text-align: right; direction: rtl; }
+        body.rtl-mode [lang="fr"] { display: none; }
+        body.rtl-mode [lang="ar"] { display: block; }
+        body.rtl-mode .top-bar { text-align: left; }
+        body.rtl-mode .activity-list li::before { transform: scaleX(-1); }
+
+        @media (max-width: 768px) {
+            .contact-box { grid-template-columns: 1fr; text-align: center; }
+            .header-content { flex-direction: column; gap: 15px; }
+        }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="fr"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;NOVATREX — BTPH &amp; Hydraulique&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&amp;family=Noto+Sans+Arabic:wght@400;700;900&amp;display=swap" rel="stylesheet"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>:root {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--yellow: #ecb42c;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--blue: #223b8f;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--black: #1a1a1a;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>--light: #fdfdfd;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>* { box-sizing: border-box; margin: 0; padding: 0; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body { font-family: 'Inter', 'Noto Sans Arabic', sans-serif; background: var(--light); color: var(--black); line-height: 1.6; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Barre de Langue supérieure */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.top-bar {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: var(--black);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 8px 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: right;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 2px solid var(--yellow);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.container { width: min(92%, 1200px); margin: 0 auto; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.lang-switcher button {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: none; border: none; color: white; cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold; font-size: 0.9rem; padding: 0 10px; transition: 0.3s;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.lang-switcher button:hover { color: var(--yellow); }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.lang-divider { color: var(--yellow); }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Header &amp; Logo */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>header { background: white; padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.header-content { display: flex; justify-content: space-between; align-items: center; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo-area { display: flex; align-items: center; gap: 15px; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo-area img { height: 70px; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Hero Section */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&amp;fit=crop&amp;w=1200&amp;q=80');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-size: cover; background-position: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white; padding: 80px 0; text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero h1 { font-size: clamp(1.8rem, 5vw, 3.2rem); margin-bottom: 15px; text-transform: uppercase; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero span { color: var(--yellow); }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Grille des Activités */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-title { text-align: center; margin: 60px 0 40px; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-title h2 { font-size: 2.2rem; color: var(--blue); position: relative; display: inline-block; padding-bottom: 10px; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-title h2::after { content: ""; display: block; width: 50%; height: 4px; background: var(--yellow); position: absolute; bottom: 0; left: 25%; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.activity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.card {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white; border-radius: 12px; padding: 30px;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 5px solid var(--blue);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.card h3 { color: var(--blue); margin-bottom: 20px; font-size: 1.3rem; border-bottom: 1px solid #eee; padding-bottom: 10px; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.activity-list { list-style: none; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.activity-list li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.activity-list li::before { content: "✔"; color: var(--yellow); font-weight: bold; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Section Contact */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.contact-box {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: var(--black); color: white; border-radius: 15px;<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 40px; margin: 60px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.contact-info h2 { color: var(--yellow); margin-bottom: 20px; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.btn {<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block; background: var(--yellow); color: var(--black);<span class="Apple-converted-space"> </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px 30px; border-radius: 5px; font-weight: bold; text-decoration: none; transition: 0.3s;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.btn:hover { background: white; }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Gestion des langues (Affichage/Masquage) */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>[lang="ar"] { display: none; text-align: right; direction: rtl; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body.rtl-mode [lang="fr"] { display: none; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body.rtl-mode [lang="ar"] { display: block; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body.rtl-mode .top-bar { text-align: left; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body.rtl-mode .activity-list li::before { transform: scaleX(-1); }</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.contact-box { grid-template-columns: 1fr; text-align: center; }</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.header-content { flex-direction: column; gap: 15px; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="top-bar"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container lang-switcher"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="setLang('fr')"&gt;FRANÇAIS&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="lang-divider"&gt;|&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="setLang('ar')"&gt;العربية&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;header&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container header-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="logo-area"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;img src="IMG_5955.jpg" alt="Logo NOVATREX"&gt; &lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h1 style="font-size: 1.6rem; letter-spacing: 1px;"&gt;NOVATREX&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p lang="fr" style="font-size: 0.75rem; font-weight: bold; color: var(--blue);"&gt;BTPH &amp; HYDRAULIQUE&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p lang="ar" style="font-size: 0.85rem; font-weight: bold; color: var(--blue);"&gt;بناء، أشغال عمومية و ري&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="hero"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 lang="fr"&gt;Solutions d'Ingénierie &lt;span&gt;BTPH&lt;/span&gt;&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1 lang="ar"&gt;حلول الهندسة في &lt;span&gt;البناء و الأشغال العمومية&lt;/span&gt;&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p lang="fr"&gt;Expertise reconnue en Algérie pour l'étude et la réalisation de vos infrastructures.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p lang="ar"&gt;خبرة معترف بها في الجزائر في دراسة وإنجاز البنية التحتية الخاصة بكم.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;main class="container"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="section-title"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 lang="fr"&gt;Nos Activités&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2 lang="ar"&gt;نشاطاتنا&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="activity-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 lang="fr"&gt;🏗️ Construction &amp; Bâtiment&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 lang="ar"&gt;🏗️ البناء والهندسة&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul class="activity-list"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="fr"&gt;Travaux de bâtiment en tous corps d'état (TCE)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="ar"&gt;أشغال البناء بكل فروع الدولة&lt;/li&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="fr"&gt;Réhabilitation des bâtiments&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="ar"&gt;إعادة تأهيل المباني&lt;/li&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="fr"&gt;Étanchéité des bâtiments&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="ar"&gt;أشغال إحكام الكتامة للمباني&lt;/li&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="fr"&gt;Démolition des bâtiments et installations industrielles&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="ar"&gt;هدم المباني والمنشآت الصناعية&lt;/li&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="fr"&gt;Charpente métallique (Fabrication, assemblage et pose)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="ar"&gt;الهيكل المعدني (صناعة، تجميع وتركيب فقط)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 lang="fr"&gt;🛣️ Travaux Publics &amp; Voirie&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 lang="ar"&gt;🛣️ الأشغال العمومية والطرق&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul class="activity-list"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="fr"&gt;Travaux publics et entretien routier&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="ar"&gt;الأشغال العمومية وصيانة الطرق&lt;/li&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="fr"&gt;Aménagement urbain et espaces verts&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="ar"&gt;أشغال التهيئة الحضرية والمساحات الخضراء&lt;/li&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="fr"&gt;Installation de réseaux et centres électriques et téléphoniques&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="ar"&gt;تركيب الشبكات والمراكز الكهربائية والهاتفية&lt;/li&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="fr"&gt;Travaux d'électricité générale&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="ar"&gt;أشغال الكهرباء العامة&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 lang="fr"&gt;💧 Hydraulique &amp; Forage&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 lang="ar"&gt;💧 الري و حفر الآبار&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;ul class="activity-list"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="fr"&gt;Travaux de forage et d'exploitation de puits&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="ar"&gt;أشغال حفر واستغلال الآبار&lt;/li&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="fr"&gt;Équipement de réseaux d'irrigation&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="ar"&gt;تجهيز شبكات الري&lt;/li&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="fr"&gt;Études et réalisation BTPH (Bâtiment, TP et Hydraulique)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;li lang="ar"&gt;دراسة وإنجاز في جميع أنشطة البناء، الأشغال العمومية والري&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="contact-box"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="contact-info"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 lang="fr"&gt;Contactez la Direction&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 lang="ar"&gt;اتصل بالإدارة&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;📍 Lotis. Claude Lagrotte – Section 275 – Ain Beniane – Alger&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;📞 0550 81 61 01&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;📧 &lt;strong&gt;dg@novatrex-dz.com&lt;/strong&gt;&lt;/p&gt; &lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="text-align: center;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="mailto:dg@novatrex-dz.com" class="btn lang-fr"&gt;Demander un devis&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="mailto:dg@novatrex-dz.com" class="btn lang-ar"&gt;طلب تسعيرة&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer style="background: #eee; padding: 30px 0; text-align: center; font-size: 0.85rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;© 2026 NOVATREX — Algérie. All rights reserved.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function setLang(lang) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if(lang === 'ar') {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.body.classList.add('rtl-mode');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>document.body.classList.remove('rtl-mode');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+
+    <div class="top-bar">
+        <div class="container lang-switcher">
+            <button onclick="setLang('fr')">FRANÇAIS</button>
+            <span class="lang-divider">|</span>
+            <button onclick="setLang('ar')">العربية</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo-area">
+                <img src="IMG_5955.jpg" alt="Logo NOVATREX"> <div>
+                    <h1 style="font-size: 1.6rem; letter-spacing: 1px;">NOVATREX</h1>
+                    <p lang="fr" style="font-size: 0.75rem; font-weight: bold; color: var(--blue);">BTPH & HYDRAULIQUE</p>
+                    <p lang="ar" style="font-size: 0.85rem; font-weight: bold; color: var(--blue);">بناء، أشغال عمومية و ري</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 lang="fr">Solutions d'Ingénierie <span>BTPH</span></h1>
+            <h1 lang="ar">حلول الهندسة في <span>البناء و الأشغال العمومية</span></h1>
+            <p lang="fr">Expertise reconnue en Algérie pour l'étude et la réalisation de vos infrastructures.</p>
+            <p lang="ar">خبرة معترف بها في الجزائر في دراسة وإنجاز البنية التحتية الخاصة بكم.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <div class="section-title">
+            <h2 lang="fr">Nos Activités</h2>
+            <h2 lang="ar">نشاطاتنا</h2>
+        </div>
+
+        <div class="activity-grid">
+            <div class="card">
+                <h3 lang="fr">🏗️ Construction & Bâtiment</h3>
+                <h3 lang="ar">🏗️ البناء والهندسة</h3>
+                <ul class="activity-list">
+                    <li lang="fr">Travaux de bâtiment en tous corps d'état (TCE)</li>
+                    <li lang="ar">أشغال البناء بكل فروع الدولة</li>
+                    
+                    <li lang="fr">Réhabilitation des bâtiments</li>
+                    <li lang="ar">إعادة تأهيل المباني</li>
+                    
+                    <li lang="fr">Étanchéité des bâtiments</li>
+                    <li lang="ar">أشغال إحكام الكتامة للمباني</li>
+                    
+                    <li lang="fr">Démolition des bâtiments et installations industrielles</li>
+                    <li lang="ar">هدم المباني والمنشآت الصناعية</li>
+                    
+                    <li lang="fr">Charpente métallique (Fabrication, assemblage et pose)</li>
+                    <li lang="ar">الهيكل المعدني (صناعة، تجميع وتركيب فقط)</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 lang="fr">🛣️ Travaux Publics & Voirie</h3>
+                <h3 lang="ar">🛣️ الأشغال العمومية والطرق</h3>
+                <ul class="activity-list">
+                    <li lang="fr">Travaux publics et entretien routier</li>
+                    <li lang="ar">الأشغال العمومية وصيانة الطرق</li>
+                    
+                    <li lang="fr">Aménagement urbain et espaces verts</li>
+                    <li lang="ar">أشغال التهيئة الحضرية والمساحات الخضراء</li>
+                    
+                    <li lang="fr">Installation de réseaux et centres électriques et téléphoniques</li>
+                    <li lang="ar">تركيب الشبكات والمراكز الكهربائية والهاتفية</li>
+                    
+                    <li lang="fr">Travaux d'électricité générale</li>
+                    <li lang="ar">أشغال الكهرباء العامة</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 lang="fr">💧 Hydraulique & Forage</h3>
+                <h3 lang="ar">💧 الري و حفر الآبار</h3>
+                <ul class="activity-list">
+                    <li lang="fr">Travaux de forage et d'exploitation de puits</li>
+                    <li lang="ar">أشغال حفر واستغلال الآبار</li>
+                    
+                    <li lang="fr">Équipement de réseaux d'irrigation</li>
+                    <li lang="ar">تجهيز شبكات الري</li>
+                    
+                    <li lang="fr">Études et réalisation BTPH (Bâtiment, TP et Hydraulique)</li>
+                    <li lang="ar">دراسة وإنجاز في جميع أنشطة البناء، الأشغال العمومية والري</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="contact-box">
+            <div class="contact-info">
+                <h2 lang="fr">Contactez la Direction</h2>
+                <h2 lang="ar">اتصل بالإدارة</h2>
+                <p>📍 Lotis. Claude Lagrotte – Section 275 – Ain Beniane – Alger</p>
+                <p>📞 0550 81 61 01</p>
+                <p>📧 <strong>dg@novatrex-dz.com</strong></p> </div>
+            <div style="text-align: center;">
+                <a href="mailto:dg@novatrex-dz.com" class="btn lang-fr">Demander un devis</a>
+                <a href="mailto:dg@novatrex-dz.com" class="btn lang-ar">طلب تسعيرة</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer style="background: #eee; padding: 30px 0; text-align: center; font-size: 0.85rem;">
+        <p>© 2026 NOVATREX — Algérie. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function setLang(lang) {
+            if(lang === 'ar') {
+                document.body.classList.add('rtl-mode');
+            } else {
+                document.body.classList.remove('rtl-mode');
+            }
+        }
+    </script>
 </body>
 </html>
