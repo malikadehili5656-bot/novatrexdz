@@ -3,924 +3,437 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NOVATREX | Travaux Publics, Bâtiments TCE & Hydrauliques</title>
-
+  <title>NOVATREX | BTPH</title>
   <style>
-    :root{
-      --black:#181418;
-      --blue:#273c97;
-      --cyan:#18a8c8;
-      --orange:#f2a11c;
-      --yellow:#f4c13d;
-      --light:#f5f5f5;
-      --white:#ffffff;
-      --text:#2d2d2d;
-      --muted:#666666;
-      --soft:#f9f7ef;
-      --border:#e7e7e7;
+    :root {
+      --black: #141414;
+      --blue: #273c97;
+      --cyan: #18a8c8;
+      --orange: #f2a11c;
+      --yellow: #f4c13d;
+      --white: #ffffff;
+      --light: #f4f4f4;
+      --text: #2f2f2f;
+      --muted: #666666;
+      --border: #e6e6e6;
     }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
       font-family: Arial, Helvetica, sans-serif;
       background: var(--light);
       color: var(--text);
-      line-height:1.6;
+      line-height: 1.65;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(1180px, 92%); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(20,20,20,0.97);
+      border-bottom: 3px solid var(--yellow);
+      box-shadow: 0 3px 14px rgba(0,0,0,0.15);
+    }
+    .nav {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 0;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      flex: 1 1 520px;
+    }
+    .brand img {
+      height: 76px;
+      width: auto;
+      object-fit: contain;
+      background: transparent;
+      flex-shrink: 0;
+    }
+    .brand-text h1 {
+      color: var(--white);
+      font-size: 1.5rem;
+      line-height: 1.1;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+    .brand-text p {
+      color: rgba(255,255,255,0.82);
+      font-size: 0.94rem;
+    }
+    .lang-switch {
+      display: flex;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .lang-btn {
+      border: 1px solid rgba(255,255,255,0.24);
+      background: transparent;
+      color: var(--white);
+      padding: 10px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+    .lang-btn:hover, .lang-btn.active {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--black);
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-    }
-
-    .container{
-      width:min(1180px, 92%);
-      margin:0 auto;
-    }
-
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:999;
-      background:rgba(255,255,255,0.96);
-      backdrop-filter: blur(8px);
-      border-bottom:3px solid var(--yellow);
-      box-shadow:0 3px 16px rgba(0,0,0,0.06);
-    }
-
-    .nav{
-      min-height:90px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      padding:12px 0;
-      flex-wrap:wrap;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      min-width:0;
-    }
-
-    .brand img{
-      width:auto;
-      height:88px;
-      object-fit:contain;
-      flex-shrink:0;
-    }
-
-    .brand-text{
-      min-width:0;
-    }
-
-    .brand-text h1{
-      font-size:1.7rem;
-      color:var(--black);
-      line-height:1.1;
-      margin-bottom:4px;
-      letter-spacing:0.5px;
-    }
-
-    .brand-text p{
-      color:var(--muted);
-      font-size:0.96rem;
-    }
-
-    .lang-switch{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .lang-btn{
-      border:none;
-      background:var(--black);
-      color:var(--white);
-      padding:10px 18px;
-      border-radius:10px;
-      cursor:pointer;
-      font-weight:700;
-      font-size:0.95rem;
-      transition:0.25s ease;
-    }
-
-    .lang-btn:hover{
-      background:var(--blue);
-    }
-
-    .lang-btn.active{
-      background:var(--orange);
-      color:var(--white);
-    }
-
-    .hero{
-      padding:64px 0 42px;
+    .hero {
+      position: relative;
+      color: var(--white);
+      padding: 110px 0 80px;
       background:
-        linear-gradient(135deg, rgba(255,255,255,0.95), rgba(249,247,239,0.95)),
-        linear-gradient(90deg, var(--white), var(--soft));
-      border-bottom:5px solid var(--yellow);
+        linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)),
+        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    }
+    .hero h2 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 1.12;
+      margin-bottom: 18px;
+      max-width: 900px;
+    }
+    .hero h2 .accent { color: var(--yellow); }
+    .hero p {
+      max-width: 850px;
+      font-size: 1.12rem;
+      color: rgba(255,255,255,0.92);
     }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.15fr 0.85fr;
-      gap:34px;
-      align-items:center;
+    .section { padding: 70px 0; }
+    .section-title {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+    .section-title h3 {
+      color: var(--blue);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 10px;
+    }
+    .section-title .line {
+      width: 70px;
+      height: 5px;
+      background: var(--yellow);
+      border-radius: 999px;
+      margin: 0 auto 16px;
+    }
+    .section-title p {
+      color: var(--muted);
+      max-width: 860px;
+      margin: 0 auto;
     }
 
-    .eyebrow{
-      display:inline-block;
-      background:var(--soft);
-      color:var(--blue);
-      border-left:5px solid var(--orange);
-      padding:8px 14px;
-      border-radius:10px;
-      font-weight:700;
-      margin-bottom:18px;
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 24px;
+      align-items: start;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.07);
+      border: 1px solid var(--border);
+      height: 100%;
+    }
+    .service-card.blue { border-top: 6px solid var(--blue); }
+    .service-card.yellow { border-top: 6px solid var(--yellow); }
+    .service-card.cyan { border-top: 6px solid var(--cyan); }
+    .service-card h4 {
+      color: var(--blue);
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+      line-height: 1.35;
+    }
+    .service-card ul {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+    .service-card li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+    .service-card li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--orange);
+      font-weight: 700;
     }
 
-    .hero h2{
-      font-size:2.5rem;
-      line-height:1.18;
-      color:var(--black);
-      margin-bottom:16px;
+    .contact-wrap {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 26px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .contact-wrap h3 {
+      color: var(--yellow);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 14px;
+    }
+    .contact-wrap p {
+      color: rgba(255,255,255,0.88);
+      font-size: 1.04rem;
+      margin-bottom: 18px;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+    .btn-primary {
+      background: var(--yellow);
+      color: var(--black);
+    }
+    .btn-primary:hover { background: #e1af20; }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.22);
+      color: var(--white);
+    }
+    .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+      font-size: 1rem;
+    }
+    .contact-list li { color: rgba(255,255,255,0.92); }
+
+    footer {
+      padding: 34px 0 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+    .legal {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: #7a7a7a;
+      line-height: 1.7;
     }
 
-    .hero h2 .accent{
-      color:var(--blue);
+    .rtl { direction: rtl; text-align: right; font-family: Tahoma, Arial, sans-serif; }
+    .rtl .nav { direction: rtl; }
+    .rtl .brand { flex-direction: row-reverse; }
+    .rtl .section, .rtl .hero { text-align: right; }
+    .rtl .section-title { text-align: center; }
+    .rtl .service-card li { padding-left: 0; padding-right: 28px; }
+    .rtl .service-card li::before { left: auto; right: 0; }
+    .hidden { display: none !important; }
+
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; }
     }
 
-    .hero p{
-      font-size:1.04rem;
-      color:#494949;
-      margin-bottom:24px;
-      max-width:750px;
-    }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:8px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:10px;
-      font-weight:700;
-      border:2px solid transparent;
-      transition:0.25s ease;
-    }
-
-    .btn-primary{
-      background:var(--orange);
-      color:var(--white);
-    }
-
-    .btn-primary:hover{
-      background:#df920f;
-    }
-
-    .btn-secondary{
-      background:var(--white);
-      color:var(--black);
-      border-color:var(--border);
-    }
-
-    .btn-secondary:hover{
-      border-color:var(--blue);
-      color:var(--blue);
-    }
-
-    .hero-card{
-      background:var(--white);
-      border-radius:18px;
-      padding:28px;
-      box-shadow:0 12px 30px rgba(0,0,0,0.08);
-      border-top:6px solid var(--cyan);
-      border-bottom:4px solid var(--yellow);
-    }
-
-    .hero-card h3{
-      font-size:1.28rem;
-      color:var(--blue);
-      margin-bottom:14px;
-    }
-
-    .hero-list{
-      list-style:none;
-      display:grid;
-      gap:12px;
-    }
-
-    .hero-list li{
-      position:relative;
-      padding-left:22px;
-      color:#444;
-    }
-
-    .hero-list li::before{
-      content:"";
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:var(--orange);
-      position:absolute;
-      left:0;
-      top:9px;
-    }
-
-    .section{
-      padding:64px 0;
-    }
-
-    .section-title{
-      text-align:center;
-      margin-bottom:34px;
-    }
-
-    .section-title h3{
-      font-size:2rem;
-      color:var(--black);
-      margin-bottom:10px;
-    }
-
-    .section-title p{
-      color:var(--muted);
-      max-width:860px;
-      margin:0 auto;
-      font-size:1rem;
-    }
-
-    .summary-strip{
-      background:var(--black);
-      color:var(--white);
-      padding:24px 0;
-      border-top:4px solid var(--orange);
-      border-bottom:4px solid var(--yellow);
-    }
-
-    .summary-strip .container{
-      text-align:center;
-    }
-
-    .summary-strip h3{
-      color:var(--yellow);
-      font-size:1.6rem;
-      margin-bottom:8px;
-    }
-
-    .summary-strip p{
-      max-width:920px;
-      margin:0 auto;
-      color:rgba(255,255,255,0.92);
-    }
-
-    .catalog-grid{
-      display:grid;
-      grid-template-columns:repeat(3, 1fr);
-      gap:22px;
-    }
-
-    .card{
-      background:var(--white);
-      border-radius:18px;
-      padding:24px;
-      box-shadow:0 10px 24px rgba(0,0,0,0.06);
-      border:1px solid #efefef;
-      border-bottom:5px solid var(--yellow);
-      transition:0.25s ease;
-      height:100%;
-    }
-
-    .card:hover{
-      transform:translateY(-4px);
-    }
-
-    .card h4{
-      color:var(--blue);
-      font-size:1.08rem;
-      line-height:1.35;
-      margin-bottom:12px;
-    }
-
-    .card p{
-      color:#4b4b4b;
-      font-size:0.97rem;
-    }
-
-    .highlight{
-      background:linear-gradient(135deg, #ffffff, #faf7ef);
-    }
-
-    .contact-section{
-      padding-top:32px;
-    }
-
-    .contact-box{
-      background:var(--white);
-      border-radius:20px;
-      padding:32px;
-      box-shadow:0 12px 28px rgba(0,0,0,0.07);
-      border-left:6px solid var(--orange);
-      text-align:center;
-    }
-
-    .contact-box h3{
-      font-size:1.9rem;
-      color:var(--blue);
-      margin-bottom:12px;
-    }
-
-    .contact-box p{
-      color:var(--muted);
-      margin-bottom:16px;
-    }
-
-    .contact-actions{
-      display:flex;
-      gap:12px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-top:8px;
-    }
-
-    footer{
-      margin-top:50px;
-      background:var(--black);
-      color:var(--white);
-      border-top:4px solid var(--yellow);
-    }
-
-    .footer-inner{
-      padding:30px 0;
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:24px;
-    }
-
-    .footer-box{
-      background:rgba(255,255,255,0.03);
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:16px;
-      padding:20px;
-    }
-
-    .footer-box h4{
-      color:var(--yellow);
-      margin-bottom:12px;
-      font-size:1.05rem;
-    }
-
-    .footer-box p,
-    .footer-box li,
-    .footer-box a{
-      color:rgba(255,255,255,0.92);
-      font-size:0.96rem;
-    }
-
-    .footer-box ul{
-      list-style:none;
-      display:grid;
-      gap:8px;
-    }
-
-    .footer-bottom{
-      border-top:1px solid rgba(255,255,255,0.08);
-      padding:14px 0 18px;
-      text-align:center;
-      color:rgba(255,255,255,0.72);
-      font-size:0.9rem;
-    }
-
-    .rtl{
-      direction:rtl;
-      text-align:right;
-      font-family: Tahoma, Arial, sans-serif;
-    }
-
-    .rtl .brand{
-      flex-direction:row-reverse;
-    }
-
-    .rtl .nav{
-      direction:rtl;
-    }
-
-    .rtl .hero-grid{
-      direction:rtl;
-    }
-
-    .rtl .hero,
-    .rtl .section,
-    .rtl .contact-section,
-    .rtl footer{
-      text-align:right;
-    }
-
-    .rtl .section-title{
-      text-align:center;
-    }
-
-    .rtl .hero-list li{
-      padding-left:0;
-      padding-right:22px;
-    }
-
-    .rtl .hero-list li::before{
-      left:auto;
-      right:0;
-    }
-
-    .rtl .eyebrow{
-      border-left:none;
-      border-right:5px solid var(--orange);
-    }
-
-    .rtl .contact-box{
-      border-left:none;
-      border-right:6px solid var(--orange);
-    }
-
-    .hidden{
-      display:none !important;
-    }
-
-    @media (max-width: 1100px){
-      .catalog-grid{
-        grid-template-columns:repeat(2, 1fr);
+    @media (max-width: 768px) {
+      .nav { justify-content: center; }
+      .brand {
+        flex-direction: column;
+        text-align: center;
+        flex: 1 1 100%;
       }
-
-      .hero-grid{
-        grid-template-columns:1fr;
-      }
-    }
-
-    @media (max-width: 768px){
-      .brand{
-        width:100%;
-        justify-content:center;
-        text-align:center;
-        flex-direction:column;
-        gap:10px;
-      }
-
-      .rtl .brand{
-        flex-direction:column;
-      }
-
-      .brand img{
-        height:76px;
-      }
-
-      .brand-text h1{
-        font-size:1.45rem;
-      }
-
-      .brand-text p{
-        font-size:0.92rem;
-      }
-
-      .nav{
-        justify-content:center;
-      }
-
-      .lang-switch{
-        width:100%;
-        justify-content:center;
-      }
-
-      .hero{
-        padding-top:48px;
-      }
-
-      .hero h2{
-        font-size:1.95rem;
-      }
-
-      .section-title h3{
-        font-size:1.7rem;
-      }
-
-      .catalog-grid{
-        grid-template-columns:1fr;
-      }
-
-      .footer-inner{
-        grid-template-columns:1fr;
-      }
+      .rtl .brand { flex-direction: column; }
+      .brand img { height: 68px; }
+      .brand-text h1 { font-size: 1.35rem; }
+      .brand-text p { font-size: 0.9rem; }
+      .lang-switch { width: 100%; justify-content: center; }
+      .hero { padding: 90px 0 60px; }
+      .contact-wrap { padding: 28px 22px; }
     }
   </style>
 </head>
 <body>
-
   <header class="topbar">
     <div class="container nav">
       <div class="brand">
-        <img src="logo-novatrex.png" alt="Logo Novatrex" />
+        <img src="logo-novatrex.png" alt="Logo Novatrex">
         <div class="brand-text">
-          <h1 id="nav-company-name">NOVATREX</h1>
-          <p id="nav-company-subtitle">Entreprise de Travaux Publics, Bâtiments TCE & Hydrauliques</p>
+          <h1>NOVATREX</h1>
+          <p id="nav-subtitle-fr">Entreprise de Travaux Publics, Bâtiments TCE & Hydrauliques</p>
+          <p id="nav-subtitle-ar" class="hidden">مؤسسة الأشغال العمومية والبناء بكل التخصصات والهيدروليك</p>
         </div>
       </div>
-
       <div class="lang-switch">
-        <button class="lang-btn active" id="btn-fr" onclick="setLanguage('fr')">FR</button>
-        <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">AR</button>
+        <button class="lang-btn active" id="btn-fr" onclick="setLanguage('fr')">FRANÇAIS</button>
+        <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">العربية</button>
       </div>
     </div>
   </header>
 
-  <!-- VERSION FR -->
   <main id="page-fr">
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Catalogue de services</div>
-          <h2>
-            Votre partenaire en <span class="accent">bâtiment</span>,
-            <span class="accent">travaux publics</span> et
-            <span class="accent">hydraulique</span>
-          </h2>
-          <p>
-            NOVATREX accompagne les projets publics, privés et industriels à travers une offre complète
-            de prestations dans les domaines du bâtiment, de l’électricité, des travaux publics,
-            de l’aménagement, des réseaux, de l’hydraulique, de la réhabilitation et des structures métalliques.
-          </p>
-
-          <div class="hero-actions">
-            <a href="tel:0550816101" class="btn btn-primary">Appeler maintenant</a>
-            <a href="mailto:dg@novatrex-dz.com" class="btn btn-secondary">Envoyer un email</a>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <h3>Présentation de l’entreprise</h3>
-          <ul class="hero-list">
-            <li>Entreprise de Travaux Publics, Bâtiments TCE & Hydrauliques</li>
-            <li>Intervention sur projets de construction, aménagement, réhabilitation et réseaux techniques</li>
-            <li>Étude, exécution et réalisation de prestations adaptées aux besoins du client</li>
-            <li>Approche professionnelle, structurée et orientée qualité</li>
-          </ul>
-        </div>
+      <div class="container">
+        <h2>Expertise <span class="accent">BTPH</span> au service de vos projets</h2>
+        <p>Études, réalisation et maintenance d'infrastructures durables partout en Algérie.</p>
       </div>
     </section>
 
-    <section class="section highlight" id="services-fr">
+    <section class="section">
       <div class="container">
         <div class="section-title">
-          <h3>Nos activités</h3>
-          <p>
-            Nous proposons un ensemble de services spécialisés couvrant les travaux de bâtiment,
-            les travaux publics, l’électricité, les réseaux, l’hydraulique et les ouvrages techniques.
-          </p>
+          <h3>Nos Domaines d'Activité</h3>
+          <div class="line"></div>
         </div>
-
-        <div class="catalog-grid">
-          <article class="card">
-            <h4>Travaux de bâtiment en tous corps d’état</h4>
-            <p>
-              Réalisation complète de bâtiments en tous corps d’état, incluant l’organisation,
-              la coordination et l’exécution des différents travaux nécessaires à la bonne réalisation du projet.
-            </p>
+        <div class="services-grid">
+          <article class="service-card blue">
+            <h4>🏢 Bâtiment & Génie Civil</h4>
+            <ul>
+              <li>Travaux de bâtiment en tous corps d'état (TCE)</li>
+              <li>Réhabilitation et rénovation des bâtiments</li>
+              <li>Étanchéité des bâtiments (toitures et terrasses)</li>
+              <li>Charpente métallique (fabrication, assemblage et pose)</li>
+              <li>Démolition de bâtiments et installations industrielles</li>
+            </ul>
           </article>
-
-          <article class="card">
-            <h4>Travaux d’électricité</h4>
-            <p>
-              Réalisation d’installations électriques, maintenance, raccordements, mise en conformité
-              et interventions techniques pour bâtiments, équipements et infrastructures.
-            </p>
+          <article class="service-card yellow">
+            <h4>🛣️ Travaux Publics & Voirie</h4>
+            <ul>
+              <li>Travaux publics et entretien routier</li>
+              <li>Aménagement urbain et espaces verts</li>
+              <li>Réseaux et centres électriques et téléphoniques</li>
+              <li>Travaux d'électricité générale</li>
+            </ul>
           </article>
-
-          <article class="card">
-            <h4>Travaux publics et entretien routier</h4>
-            <p>
-              Exécution de travaux publics, travaux de voirie, entretien routier et opérations liées
-              aux infrastructures de circulation et d’aménagement urbain.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>Travaux d’aménagement urbain et d’espaces verts</h4>
-            <p>
-              Réalisation de travaux d’aménagement extérieur, embellissement urbain,
-              organisation d’espaces publics et création d’espaces verts fonctionnels et durables.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>Installation de réseaux et centres électriques et téléphoniques</h4>
-            <p>
-              Pose, organisation et équipement de réseaux électriques et téléphoniques,
-              avec installation des centres et dispositifs nécessaires à leur fonctionnement.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>Équipement de réseaux d’irrigation</h4>
-            <p>
-              Mise en place et équipement de réseaux d’irrigation destinés aux projets
-              agricoles, hydrauliques et d’aménagement.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>Travaux de forage et d’exploitation de puits</h4>
-            <p>
-              Réalisation de travaux de forage, création et exploitation de puits,
-              selon les besoins techniques du site et du projet.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>Études et réalisation liées au bâtiment, aux travaux publics et à l’hydraulique</h4>
-            <p>
-              Étude, préparation, planification et exécution de tout type d’activité
-              en lien avec le bâtiment, les travaux publics et les ouvrages hydrauliques.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>Charpente métallique</h4>
-            <p>
-              Fabrication, assemblage et pose de structures métalliques uniquement,
-              pour bâtiments, hangars, ouvrages techniques et installations diverses.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>Étanchéité des bâtiments</h4>
-            <p>
-              Travaux d’étanchéité pour bâtiments, toitures, terrasses et autres surfaces,
-              afin d’assurer protection, durabilité et résistance aux infiltrations.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>Démolition des bâtiments et installations industrielles adjacentes</h4>
-            <p>
-              Travaux de démolition de bâtiments et d’installations industrielles adjacentes,
-              dans le respect des exigences techniques et des normes de sécurité.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>Réhabilitation des bâtiments</h4>
-            <p>
-              Travaux de réhabilitation, rénovation, amélioration et remise à niveau
-              des bâtiments existants selon les besoins du maître d’ouvrage.
-            </p>
+          <article class="service-card cyan">
+            <h4>💧 Hydraulique & Forage</h4>
+            <ul>
+              <li>Équipement de réseaux d'irrigation</li>
+              <li>Travaux de forage et exploitation de puits</li>
+              <li>Études et réalisation de projets BTPH</li>
+            </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="summary-strip">
+    <section class="section" style="padding-top: 10px;">
       <div class="container">
-        <h3>NOVATREX</h3>
-        <p>
-          Entreprise de Travaux Publics, Bâtiments TCE & Hydrauliques,
-          intervenant dans la réalisation de projets techniques, urbains, hydrauliques et industriels.
-        </p>
-      </div>
-    </section>
-
-    <section class="section contact-section">
-      <div class="container">
-        <div class="contact-box">
-          <h3>Contactez-nous</h3>
-          <p>Pour toute demande de devis, d’information ou de collaboration.</p>
-          <div class="contact-actions">
-            <a href="tel:0550816101" class="btn btn-primary">Tél : 0550816101</a>
-            <a href="mailto:dg@novatrex-dz.com" class="btn btn-secondary">dg@novatrex-dz.com</a>
+        <div class="contact-wrap">
+          <div>
+            <h3>Besoin d'un devis ?</h3>
+            <p>Contactez notre direction pour une étude personnalisée de votre dossier.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="mailto:dg@novatrex-dz.com">dg@novatrex-dz.com</a>
+              <a class="btn btn-outline" href="tel:0550816101">0550 81 61 01</a>
+            </div>
           </div>
+          <ul class="contact-list">
+            <li>📍 Lotissement CLAUDE LAGROTTE, Section 275 - RDC, Ain Beniane, Alger</li>
+            <li>📞 0550 81 61 01</li>
+          </ul>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- VERSION AR -->
   <main id="page-ar" class="rtl hidden">
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">دليل الخدمات</div>
-          <h2>
-            شريككم في <span class="accent">البناء</span> و<span class="accent">الأشغال العمومية</span> و<span class="accent">الهيدروليك</span>
-          </h2>
-          <p>
-            ترافق نوفاتريكس مختلف المشاريع العمومية والخاصة والصناعية من خلال مجموعة متكاملة من الخدمات
-            في مجالات البناء، الكهرباء، الأشغال العمومية، التهيئة، الشبكات، الهيدروليك، إعادة التأهيل والهياكل المعدنية.
-          </p>
-
-          <div class="hero-actions">
-            <a href="tel:0550816101" class="btn btn-primary">اتصل الآن</a>
-            <a href="mailto:dg@novatrex-dz.com" class="btn btn-secondary">إرسال بريد إلكتروني</a>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <h3>نبذة عن المؤسسة</h3>
-          <ul class="hero-list">
-            <li>مؤسسة للأشغال العمومية والبناء بكل التخصصات والهيدروليك</li>
-            <li>تتدخل في مشاريع البناء والتهيئة وإعادة التأهيل والشبكات التقنية</li>
-            <li>تتكفل بالدراسة والتنفيذ والإنجاز حسب حاجيات الزبون</li>
-            <li>منهجية مهنية منظمة تركز على الجودة وحسن الإنجاز</li>
-          </ul>
-        </div>
+      <div class="container">
+        <h2>خبرة <span class="accent">BTPH</span> في خدمة مشاريعكم</h2>
+        <p>دراسات وإنجاز وصيانة البنى التحتية المستدامة عبر كامل التراب الوطني.</p>
       </div>
     </section>
 
-    <section class="section highlight" id="services-ar">
+    <section class="section">
       <div class="container">
         <div class="section-title">
-          <h3>نشاطاتنا</h3>
-          <p>
-            نقدم مجموعة من الخدمات المتخصصة التي تغطي أشغال البناء، الأشغال العمومية،
-            الكهرباء، الشبكات، الهيدروليك والمنشآت التقنية المختلفة.
-          </p>
+          <h3>مجالات نشاطنا</h3>
+          <div class="line"></div>
         </div>
-
-        <div class="catalog-grid">
-          <article class="card">
-            <h4>أشغال البناء بكل التخصصات</h4>
-            <p>
-              إنجاز مشاريع البناء بمختلف التخصصات، مع تنظيم وتنسيق وتنفيذ جميع الأشغال
-              الضرورية لضمان حسن سير المشروع وإنجازه.
-            </p>
+        <div class="services-grid">
+          <article class="service-card blue">
+            <h4>🏢 البناء والهندسة المدنية</h4>
+            <ul>
+              <li>أشغال البناء بكل التخصصات</li>
+              <li>إعادة تأهيل وترميم المباني</li>
+              <li>عزل المباني والأسطح والتراسات</li>
+              <li>الهياكل المعدنية: تصنيع وتجميع وتركيب</li>
+              <li>هدم المباني والمنشآت الصناعية</li>
+            </ul>
           </article>
-
-          <article class="card">
-            <h4>أشغال الكهرباء</h4>
-            <p>
-              إنجاز التركيبات الكهربائية، الصيانة، الربط، المطابقة التقنية
-              والتدخلات الخاصة بالمباني والتجهيزات والمنشآت.
-            </p>
+          <article class="service-card yellow">
+            <h4>🛣️ الأشغال العمومية والطرقات</h4>
+            <ul>
+              <li>الأشغال العمومية وصيانة الطرق</li>
+              <li>التهيئة الحضرية والمساحات الخضراء</li>
+              <li>الشبكات والمراكز الكهربائية والهاتفية</li>
+              <li>أشغال الكهرباء العامة</li>
+            </ul>
           </article>
-
-          <article class="card">
-            <h4>الأشغال العمومية وصيانة الطرق</h4>
-            <p>
-              إنجاز مشاريع الأشغال العمومية، أشغال الطرق والتهيئة
-              وصيانة المسالك والمنشآت المرتبطة بالبنية التحتية.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>أشغال التهيئة الحضرية والمساحات الخضراء</h4>
-            <p>
-              إنجاز أعمال التهيئة الخارجية والتجميل الحضري وتنظيم الفضاءات العمومية
-              وإنشاء المساحات الخضراء بشكل عملي ودائم.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>تركيب الشبكات والمراكز الكهربائية والهاتفية</h4>
-            <p>
-              وضع وتجهيز الشبكات الكهربائية والهاتفية وتركيب المراكز
-              والوسائل اللازمة لضمان حسن الاستغلال والتشغيل.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>تجهيز شبكات السقي</h4>
-            <p>
-              إنجاز وتجهيز شبكات السقي الموجهة للمشاريع الفلاحية
-              والهيدروليكية وأشغال التهيئة المختلفة.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>أشغال الحفر واستغلال الآبار</h4>
-            <p>
-              إنجاز أشغال الحفر وإنشاء واستغلال الآبار
-              حسب المتطلبات التقنية وطبيعة المشروع والموقع.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>الدراسات والإنجاز في مجالات البناء والأشغال العمومية والهيدروليك</h4>
-            <p>
-              دراسة وتحضير وتخطيط وإنجاز مختلف الأنشطة المرتبطة
-              بالبناء والأشغال العمومية والهيدروليك.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>الهياكل المعدنية</h4>
-            <p>
-              تصنيع وتجميع وتركيب الهياكل المعدنية فقط
-              الخاصة بالمباني والمستودعات والمنشآت التقنية.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>عزل المباني</h4>
-            <p>
-              إنجاز أشغال العزل للمباني والأسطح والتراسات
-              لمقاومة التسربات وضمان الحماية والاستدامة.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>هدم المباني والمنشآت الصناعية المجاورة</h4>
-            <p>
-              إنجاز أشغال هدم المباني والمنشآت الصناعية المجاورة
-              مع احترام المعايير التقنية وقواعد السلامة.
-            </p>
-          </article>
-
-          <article class="card">
-            <h4>إعادة تأهيل المباني</h4>
-            <p>
-              إنجاز أشغال إعادة التأهيل والترميم والتحسين ورفع المستوى
-              للمباني القائمة حسب متطلبات المشروع.
-            </p>
+          <article class="service-card cyan">
+            <h4>💧 الهيدروليك والحفر</h4>
+            <ul>
+              <li>تجهيز شبكات السقي</li>
+              <li>أشغال الحفر واستغلال الآبار</li>
+              <li>الدراسات وإنجاز مشاريع BTPH</li>
+            </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="summary-strip">
+    <section class="section" style="padding-top: 10px;">
       <div class="container">
-        <h3>نوفاتريكس</h3>
-        <p>
-          مؤسسة للأشغال العمومية والبناء بكل التخصصات والهيدروليك،
-          تنشط في إنجاز المشاريع التقنية والحضرية والهيدروليكية والصناعية.
-        </p>
-      </div>
-    </section>
-
-    <section class="section contact-section">
-      <div class="container">
-        <div class="contact-box">
-          <h3>اتصلوا بنا</h3>
-          <p>لأي طلب عرض سعر أو استفسار أو تعاون مهني.</p>
-          <div class="contact-actions">
-            <a href="tel:0550816101" class="btn btn-primary">0550816101 :الهاتف</a>
-            <a href="mailto:dg@novatrex-dz.com" class="btn btn-secondary">dg@novatrex-dz.com</a>
+        <div class="contact-wrap">
+          <div>
+            <h3>بحاجة إلى عرض سعر؟</h3>
+            <p>تواصلوا مع الإدارة من أجل دراسة مخصصة لمشروعكم.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="mailto:dg@novatrex-dz.com">dg@novatrex-dz.com</a>
+              <a class="btn btn-outline" href="tel:0550816101">0550 81 61 01</a>
+            </div>
           </div>
+          <ul class="contact-list">
+            <li>📍 Lotissement CLAUDE LAGROTTE, Section 275 - RDC, Ain Beniane, Alger</li>
+            <li>📞 0550 81 61 01</li>
+          </ul>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footer-inner">
-      <div class="footer-box" id="footer-fr">
-        <h4>Informations société</h4>
-        <ul>
-          <li><strong>NOVATREX</strong></li>
-          <li>Eurl au capital social de 100 000,00 DA</li>
-          <li>Adresse : Lotis. CLAUDE LAGROTTE - Section 275 - RDC - Ain Beniane – Alger</li>
-          <li>RC N° : 16/00 -1243630 -B26</li>
-          <li>NIF : 002616124363009</li>
-          <li>NIS : 0 026 1644 0031 60</li>
-          <li>Art. Impos : 16570597531</li>
-          <li>Tél : <a href="tel:0550816101">0550816101</a></li>
-          <li>Email : <a href="mailto:dg@novatrex-dz.com">dg@novatrex-dz.com</a></li>
-        </ul>
+    <div class="container">
+      <div>© 2026 NOVATREX — Qualité et Rigueur en BTPH</div>
+      <div class="legal">
+        EURL au capital social de 100 000,00 DA · RC N° : 16/00 -1243630 -B26 · NIF : 002616124363009 · NIS : 00261644003160 · Art. Impos : 16570597531
       </div>
-
-      <div class="footer-box" id="footer-ar">
-        <h4>معلومات الشركة</h4>
-        <ul>
-          <li><strong>NOVATREX</strong></li>
-          <li>شركة ذات مسؤولية محدودة برأسمال اجتماعي قدره 100 000,00 دج</li>
-          <li>العنوان: Lotis. CLAUDE LAGROTTE - Section 275 - RDC - عين البنيان – الجزائر</li>
-          <li>السجل التجاري: 16/00 -1243630 -B26</li>
-          <li>الرقم الجبائي NIF : 002616124363009</li>
-          <li>رقم الإحصاء NIS : 0 026 1644 0031 60</li>
-          <li>المادة الخاضعة للضريبة: 16570597531</li>
-          <li>الهاتف: <a href="tel:0550816101">0550816101</a></li>
-          <li>البريد الإلكتروني: <a href="mailto:dg@novatrex-dz.com">dg@novatrex-dz.com</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      © NOVATREX - Tous droits réservés
     </div>
   </footer>
 
@@ -930,22 +443,24 @@
       const pageAr = document.getElementById('page-ar');
       const btnFr = document.getElementById('btn-fr');
       const btnAr = document.getElementById('btn-ar');
-      const html = document.documentElement;
-
+      const subFr = document.getElementById('nav-subtitle-fr');
+      const subAr = document.getElementById('nav-subtitle-ar');
+      document.documentElement.lang = lang === 'ar' ? 'ar' : 'fr';
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
       if (lang === 'ar') {
         pageFr.classList.add('hidden');
         pageAr.classList.remove('hidden');
-        btnAr.classList.add('active');
+        subFr.classList.add('hidden');
+        subAr.classList.remove('hidden');
         btnFr.classList.remove('active');
-        html.setAttribute('lang', 'ar');
-        html.setAttribute('dir', 'rtl');
+        btnAr.classList.add('active');
       } else {
         pageAr.classList.add('hidden');
         pageFr.classList.remove('hidden');
-        btnFr.classList.add('active');
+        subAr.classList.add('hidden');
+        subFr.classList.remove('hidden');
         btnAr.classList.remove('active');
-        html.setAttribute('lang', 'fr');
-        html.setAttribute('dir', 'ltr');
+        btnFr.classList.add('active');
       }
     }
   </script>
