@@ -65,7 +65,6 @@
       display:none !important;
     }
 
-    /* HEADER */
     header{
       position:sticky;
       top:0;
@@ -93,11 +92,12 @@
     }
 
     .logo{
-      height:88px;
+      height:108px;
       width:auto;
       object-fit:contain;
       display:block;
       flex-shrink:0;
+      transform:none;
     }
 
     .brand-text h1{
@@ -245,7 +245,6 @@
       background:var(--orange);
     }
 
-    /* HERO */
     .hero{
       padding:42px 0 28px;
     }
@@ -360,7 +359,6 @@
       background:rgba(242,161,28,0.08);
     }
 
-    /* SECTION */
     .section{
       padding:68px 0;
     }
@@ -390,7 +388,6 @@
       background:linear-gradient(90deg, var(--orange), var(--yellow));
     }
 
-    /* SERVICES */
     .grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -447,7 +444,6 @@
       line-height:1;
     }
 
-    /* WHY */
     .why{
       background:var(--soft);
     }
@@ -493,7 +489,6 @@
       font-size:0.95rem;
     }
 
-    /* CONTACT */
     .contact{
       background:var(--white);
       border-radius:24px;
@@ -532,7 +527,6 @@
       overflow-wrap:anywhere;
     }
 
-    /* FOOTER */
     footer{
       margin-top:70px;
       padding:0 0 28px;
@@ -567,7 +561,6 @@
       font-size:0.92rem;
     }
 
-    /* RTL */
     .rtl{
       direction:rtl;
       text-align:right;
@@ -592,7 +585,6 @@
       text-align:right;
     }
 
-    /* RESPONSIVE */
     @media (max-width:1180px){
       .navbar{
         grid-template-columns:auto 1fr auto auto;
@@ -600,7 +592,7 @@
       }
 
       .logo{
-        height:76px;
+        height:92px;
       }
 
       .brand-text h1{
@@ -653,7 +645,7 @@
       }
 
       .logo{
-        height:72px;
+        height:84px;
       }
 
       .brand-text h1{
@@ -689,7 +681,7 @@
       }
 
       .logo{
-        height:58px;
+        height:72px;
       }
 
       .brand-text h1{
@@ -813,7 +805,7 @@
       }
 
       .logo{
-        height:50px;
+        height:64px;
       }
 
       .brand-text h1{
@@ -926,7 +918,7 @@
       <div class="container">
         <div class="hero-card">
           <div class="eyebrow">Catalogue de services</div>
-          <h2>NOVATREX, votre partenaire en <span class="accent">bâtiment</span>, <span class="accent">travaux publics</span> et <span class="accent">hydraulique</span></h2>
+          <h2>NOVATREX, votre partenaire en <span class="accent">travaux publics</span>, <span class="accent">bâtiment</span> et <span class="accent">hydraulique</span></h2>
           <p>
             Entreprise spécialisée dans les travaux publics, le bâtiment tous corps d’état,
             les réseaux hydrauliques et les infrastructures techniques.
@@ -948,6 +940,16 @@
         </div>
 
         <div class="grid">
+          <div class="card orange">
+            <h4>Travaux Publics & Réseaux</h4>
+            <ul>
+              <li>Travaux publics et entretien routier</li>
+              <li>Travaux d’aménagement urbain et d’espaces verts</li>
+              <li>Installation de réseaux et centres électriques et téléphoniques</li>
+              <li>Travaux d’électricité</li>
+            </ul>
+          </div>
+
           <div class="card black">
             <h4>Bâtiment & Génie Civil</h4>
             <ul>
@@ -956,16 +958,6 @@
               <li>Étanchéité des bâtiments</li>
               <li>Charpente métallique : fabrication, assemblage et pose</li>
               <li>Démolition de bâtiments et installations industrielles adjacentes</li>
-            </ul>
-          </div>
-
-          <div class="card orange">
-            <h4>Travaux Publics & Réseaux</h4>
-            <ul>
-              <li>Travaux publics et entretien routier</li>
-              <li>Travaux d’aménagement urbain et d’espaces verts</li>
-              <li>Installation de réseaux et centres électriques et téléphoniques</li>
-              <li>Travaux d’électricité</li>
             </ul>
           </div>
 
@@ -997,20 +989,20 @@
 
           <div class="whybox">
             <div class="whyicon">2</div>
-            <h4>Plus de 30 ans d’expérience</h4>
-            <p>Un savoir-faire solide acquis à travers des décennies d’activité dans le secteur BTP.</p>
-          </div>
-
-          <div class="whybox">
-            <div class="whyicon">3</div>
             <h4>Qualité d’exécution</h4>
             <p>Des prestations sérieuses, soignées et adaptées aux exigences de chaque chantier.</p>
           </div>
 
           <div class="whybox">
-            <div class="whyicon">4</div>
+            <div class="whyicon">3</div>
             <h4>Fiabilité professionnelle</h4>
             <p>Une approche claire, fiable et orientée résultat, de l’étude à la réalisation.</p>
+          </div>
+
+          <div class="whybox">
+            <div class="whyicon">4</div>
+            <h4>Plus de 30 ans d’expérience</h4>
+            <p>Un savoir-faire solide acquis à travers des décennies d’activité dans le secteur BTP.</p>
           </div>
         </div>
       </div>
@@ -1045,7 +1037,7 @@
       <div class="container">
         <div class="hero-card">
           <div class="eyebrow">دليل الخدمات</div>
-          <h2>نوفاتريكس شريككم في <span class="accent">البناء</span> و<span class="accent">الأشغال العمومية</span> و<span class="accent">الهيدروليك</span></h2>
+          <h2>نوفاتريكس شريككم في <span class="accent">الأشغال العمومية</span> و<span class="accent">البناء</span> و<span class="accent">الهيدروليك</span></h2>
           <p>
             مؤسسة متخصصة في الأشغال العمومية، البناء بكل التخصصات،
             الشبكات الهيدروليكية والمنشآت التقنية.
@@ -1067,6 +1059,16 @@
         </div>
 
         <div class="grid">
+          <div class="card orange">
+            <h4>الأشغال العمومية والشبكات</h4>
+            <ul>
+              <li>الأشغال العمومية وصيانة الطرق</li>
+              <li>أشغال التهيئة الحضرية والمساحات الخضراء</li>
+              <li>تركيب الشبكات والمراكز الكهربائية والهاتفية</li>
+              <li>أشغال الكهرباء</li>
+            </ul>
+          </div>
+
           <div class="card black">
             <h4>البناء والهندسة المدنية</h4>
             <ul>
@@ -1075,16 +1077,6 @@
               <li>عزل المباني</li>
               <li>الهياكل المعدنية: تصنيع وتجميع وتركيب</li>
               <li>هدم المباني والمنشآت الصناعية المجاورة</li>
-            </ul>
-          </div>
-
-          <div class="card orange">
-            <h4>الأشغال العمومية والشبكات</h4>
-            <ul>
-              <li>الأشغال العمومية وصيانة الطرق</li>
-              <li>أشغال التهيئة الحضرية والمساحات الخضراء</li>
-              <li>تركيب الشبكات والمراكز الكهربائية والهاتفية</li>
-              <li>أشغال الكهرباء</li>
             </ul>
           </div>
 
@@ -1116,20 +1108,20 @@
 
           <div class="whybox">
             <div class="whyicon">2</div>
-            <h4>أكثر من 30 سنة خبرة</h4>
-            <p>خبرة ميدانية متراكمة في قطاع البناء والأشغال العمومية.</p>
-          </div>
-
-          <div class="whybox">
-            <div class="whyicon">3</div>
             <h4>جودة في التنفيذ</h4>
             <p>خدمات جدية ومنظمة ومتكيفة مع متطلبات كل مشروع.</p>
           </div>
 
           <div class="whybox">
-            <div class="whyicon">4</div>
+            <div class="whyicon">3</div>
             <h4>موثوقية مهنية</h4>
             <p>رؤية واضحة واحترافية من مرحلة الدراسة إلى غاية الإنجاز.</p>
+          </div>
+
+          <div class="whybox">
+            <div class="whyicon">4</div>
+            <h4>أكثر من 30 سنة خبرة</h4>
+            <p>خبرة ميدانية متراكمة في قطاع البناء والأشغال العمومية.</p>
           </div>
         </div>
       </div>
